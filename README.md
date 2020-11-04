@@ -32,7 +32,7 @@ Download from release and flash to magisk.
 ```
 
 
-### Fix ban 10 minute
+### Adaway AdBlocker
 ```bash
 > su -c adaway
 ```
