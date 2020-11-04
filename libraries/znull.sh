@@ -78,7 +78,7 @@ sleep 15
 
 am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 
-cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* /data/app/$PKG*/lib/*/.
+cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* /data/app/$PKG*/lib/arm/. && echo "Succes replacing lib." || "Failed replacing lib, maybe your PUBG is 64bit."
 chmod 755 /data/data/com.tencent.iglite/lib/*
 
 am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
