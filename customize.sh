@@ -9,6 +9,7 @@ echo -e "Usage: su -c znull or su > znull\n"
 
 mkdir -p $MODPATH/system/bin
 mv -f $MODPATH/libraries/znull.sh $MODPATH/system/bin/znull
+mv -f $MODPATH/libraries/adaway.sh $MODPATH/system/bin/adaway
 
 rm -rf $MODPATH/libraries/*.apk
 rm -rf $MODPATH/libraries/*.lua

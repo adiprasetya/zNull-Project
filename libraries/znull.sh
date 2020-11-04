@@ -81,10 +81,12 @@ am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* /data/app/$PKG*/lib/*/.
 chmod 755 /data/data/com.tencent.iglite/lib/*
 
-echo "Try To Open Game, Please Wait..."
-
 am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
 
+clear
+echo -e "zNull Project\n\n"
+echo "Only PUBG MOBILE LITE 32bit!"
+echo -e "Game is already started...\n\n\n"
 
 while true
 do
@@ -95,11 +97,17 @@ fi
 done
 
 am force-stop com.dclztA
+echo -e "Game closed, restoring all to normal."
+
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk
+
+echo "Done. Succesfully restoring to normal."
+sleep 1
+echo "Exiting automatically in 5 seconds, CTRL + C for canceling."
 
 #pm install -r /data/app/$PKG*/base.apk /data/app/$PKG*/base.apk  &> /dev/null
 
-sleep 2
+sleep 5
 #am force-stop com.dclztA
 am force-stop com.lite.mod
 am force-stop com.dclztz

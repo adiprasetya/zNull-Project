@@ -1,7 +1,7 @@
 # zNull Project
 
 
-Cheating PUBG MOBILE LITE using Magisk Module, i hope enjoy the module xD.
+Cheating PUBG MOBILE LITE using Magisk Module, i hope you enjoy the module xD.
 
 
 just simple script for cheating, only replace and BOOM!
@@ -22,10 +22,19 @@ link? soon xD
 ## Installation
 
 
-Only download .zip and flash to magisk.
-
-
-or
-
-
 Download from release and flash to magisk.
+
+
+## Usage
+
+```bash
+> su -c znull
+```
+
+
+### Fix ban 10 minute
+```bash
+> su -c adaway
+```
+
+---
