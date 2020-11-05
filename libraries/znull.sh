@@ -59,9 +59,9 @@ afree=$(free -m | grep Mem | awk '{print $4}')
 echo "Ram Freed $((afree-bfree)) MB!"
 
 sleep 1
-echo "Try To Open D4C GG, Please Wait... "
+echo "Try To Open ZNL GG, Please Wait... "
 
-am start -n com.dclztA/com.dclztA.MainActivity &> /dev/null
+am start -n com.znull/com.znull.MainActivity &> /dev/null
 sleep 2
 #am start -n com.d4c.injectorlite/com.androlua.Welcome &> /dev/null
 #am start -n com.lite.mod/com.androlua.Welcome &> /dev/null
@@ -78,7 +78,7 @@ sleep 15
 
 am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 
-cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* /data/app/$PKG*/lib/arm/. && echo "Succes replacing lib." || "Failed replacing lib, maybe your PUBG is 64bit."
+cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* /data/app/$PKG*/lib/arm/. && echo "Succes replacing lib." || "Failed replacing lib, maybe your PUBG is 64bit.";am force-stop com.tencent.iglite;am force-stop com.znull;exit
 chmod 755 /data/data/com.tencent.iglite/lib/*
 
 am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
@@ -96,7 +96,7 @@ else break
 fi
 done
 
-am force-stop com.dclztA
+am force-stop com.znull
 echo -e "Game closed, restoring all to normal."
 
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk
@@ -108,7 +108,8 @@ echo "Exiting automatically in 5 seconds, CTRL + C for canceling."
 #pm install -r /data/app/$PKG*/base.apk /data/app/$PKG*/base.apk  &> /dev/null
 
 sleep 5
-#am force-stop com.dclztA
+#am force-stop com.znull
+am force-stop com.tencent.iglite
 am force-stop com.lite.mod
 am force-stop com.dclztz
 am force-stop com.termux

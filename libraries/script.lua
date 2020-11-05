@@ -267,6 +267,7 @@ function LobbyAlert()
     gg.setVisible(false)
     LA2 = gg.alert("\n☣ ＬＯＢＢＹ ☣", "☣ YES ☣", "☣ NO ☣")
     if LA2 == 1 then
+		bypass()
         bcwh()
         fixsc()
         mb()
