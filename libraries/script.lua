@@ -4,12 +4,14 @@
 
 -- ✔
 
+gg.setVisible(false)
+
 -- checking gg package :v
 
-if gg.PACKAGE == "com.dclztA" then
+if gg.PACKAGE == "com.dclztB" then
     gg.clearResults()
 else
-    print("ㅤ\n🇲🇨zNull🇲🇨\nUse D4C GameGuardian 👊😎.\nXD")
+    print("ㅤ\n🇲🇨zNull🇲🇨\nUse zNull GameGuardian 👊😎.\nXD")
     os.exit()
 end
 
