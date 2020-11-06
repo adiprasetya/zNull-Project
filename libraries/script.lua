@@ -65,11 +65,10 @@ flash = off
 -- VALUE
 
 function bcwh()
-    -- yellow
+    -- red + green = yellow
     gg.setRanges(gg.REGION_VIDEO)
     gg.searchNumber("8200", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    -- gg.refineNumber("8200", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    gg.refineAddress("8", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
+    gg.refineAddress("0", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
     if gg.getResultCount() == 0 then
         gg.toast("Wallhack and Color is Still Active.")
         gg.clearResults()
@@ -77,7 +76,22 @@ function bcwh()
         gg.getResults(gg.getResultsCount())
         gg.editAll("6", gg.TYPE_DWORD)
         gg.clearResults()
-        gg.toast("Yellow ✔")
+        -- green for convert to yellow
+        gg.setRanges(gg.REGION_VIDEO)
+        gg.searchNumber("8201", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+        gg.refineAddress("8", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
+        gg.getResults(gg.getResultsCount())
+        gg.editAll("7", gg.TYPE_DWORD)
+        gg.clearResults()
+        -- black for pure it
+        gg.setRanges(gg.REGION_VIDEO)
+        gg.searchNumber("8203", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+        -- gg.refineNumber("8203", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+        gg.refineAddress("8", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
+        gg.getResults(gg.getResultsCount())
+        gg.editAll("8", gg.TYPE_DWORD)
+        gg.clearResults()
+        gg.toast("Green ✔")
         gg.clearResults()
         gg.setRanges(gg.REGION_VIDEO)
         gg.searchNumber("4.8146047e21;3.7615819e-37;2.0", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
@@ -260,7 +274,7 @@ function LobbyAlert()
     gg.setVisible(false)
     LA2 = gg.alert("\n☣ ＬＯＢＢＹ ☣", "☣ YES ☣", "☣ NO ☣")
     if LA2 == 1 then
-	bypass()
+        bypass()
         bcwh()
         aim()
         less()
