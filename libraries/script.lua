@@ -44,7 +44,6 @@ function HOME()
     else
         if MENU == 1 then
             bcwh()
-            fixsc()
         end
         if MENU == 2 then
             fs()
@@ -66,9 +65,9 @@ flash = off
 -- VALUE
 
 function bcwh()
-    -- green for convert to yellow
+    -- yellow
     gg.setRanges(gg.REGION_VIDEO)
-    gg.searchNumber("8201", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+    gg.searchNumber("8200", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
     -- gg.refineNumber("8200", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
     gg.refineAddress("8", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
     if gg.getResultCount() == 0 then
@@ -76,17 +75,9 @@ function bcwh()
         gg.clearResults()
     else
         gg.getResults(gg.getResultsCount())
-        gg.editAll("7", gg.TYPE_DWORD)
+        gg.editAll("6", gg.TYPE_DWORD)
         gg.clearResults()
-        -- black for pure it
-        gg.setRanges(gg.REGION_VIDEO)
-        gg.searchNumber("8203", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-        -- gg.refineNumber("8203", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-        gg.refineAddress("8", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
-        gg.getResults(gg.getResultsCount())
-        gg.editAll("8", gg.TYPE_DWORD)
-        gg.clearResults()
-        gg.toast("Green ✔")
+        gg.toast("Yellow ✔")
         gg.clearResults()
         gg.setRanges(gg.REGION_VIDEO)
         gg.searchNumber("4.8146047e21;3.7615819e-37;2.0", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
@@ -271,7 +262,6 @@ function LobbyAlert()
     if LA2 == 1 then
 	bypass()
         bcwh()
-        fixsc()
         aim()
         less()
         small()
