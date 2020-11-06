@@ -44,6 +44,7 @@ function HOME()
     else
         if MENU == 1 then
             bcwh()
+            fixsc()
         end
         if MENU == 2 then
             fs()
@@ -65,21 +66,14 @@ flash = off
 -- VALUE
 
 function bcwh()
-    -- red + green = yellow
+    -- green
     gg.setRanges(gg.REGION_VIDEO)
-    gg.searchNumber("8200", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    gg.refineAddress("0", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
+    gg.searchNumber("8201", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+    gg.refineAddress("8", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
     if gg.getResultCount() == 0 then
         gg.toast("Wallhack and Color is Still Active.")
         gg.clearResults()
     else
-        gg.getResults(gg.getResultsCount())
-        gg.editAll("6", gg.TYPE_DWORD)
-        gg.clearResults()
-        -- green for convert to yellow
-        gg.setRanges(gg.REGION_VIDEO)
-        gg.searchNumber("8201", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-        gg.refineAddress("8", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
         gg.getResults(gg.getResultsCount())
         gg.editAll("7", gg.TYPE_DWORD)
         gg.clearResults()
