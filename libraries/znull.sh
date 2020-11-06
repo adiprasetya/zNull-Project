@@ -107,7 +107,7 @@ done
 am force-stop com.dclztB
 echo -e "Game closed, restoring all to normal."
 
-su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk
+su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
 
 echo "Done. Succesfully restoring to normal."
 sleep 1
