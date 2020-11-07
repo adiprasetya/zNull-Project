@@ -44,7 +44,7 @@ function HOME()
     else
         if MENU == 1 then
             bcwh()
-            fixsc()
+            fix()
         end
         if MENU == 2 then
             fs()
@@ -80,12 +80,11 @@ function bcwh()
         -- black for pure it
         gg.setRanges(gg.REGION_VIDEO)
         gg.searchNumber("8203", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-        -- gg.refineNumber("8203", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
         gg.refineAddress("8", -1, gg.TYPE_DWORD, gg.SIGN_EQUAL, 0, -1)
         gg.getResults(gg.getResultsCount())
         gg.editAll("8", gg.TYPE_DWORD)
         gg.clearResults()
-        gg.toast("Yellow ✔")
+        gg.toast("Green ✔")
         gg.clearResults()
         gg.setRanges(gg.REGION_VIDEO)
         gg.searchNumber("4.8146047e21;3.7615819e-37;2.0", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
@@ -99,7 +98,7 @@ function bcwh()
 end
 -- end
 
-function fixsc()
+function fix()
     gg.clearResults()
     gg.setRanges(gg.REGION_VIDEO)
     gg.searchNumber("4.8146047e21;3.7615819e-37;130", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
@@ -109,17 +108,17 @@ function fixsc()
         gg.getResults(1)
         gg.editAll("2", gg.TYPE_FLOAT)
         gg.clearResults()
-        gg.toast("Scope Fixed ✔")
+        gg.toast("Fixed ✔")
     else
-        gg.toast("Scope is Fixed.")
+        gg.toast("Nothing.")
         gg.clearResults()
         if gg.getResultCount() == 4 then
             gg.getResults(2)
             gg.editAll("2", gg.TYPE_FLOAT)
             gg.clearResults()
-            gg.toast("Scope Fixed ✔")
+            gg.toast("Fixed ✔")
         else
-            gg.toast("Scope is Fixed.")
+            gg.toast("Nothing.")
             gg.clearResults()
         end
     end
