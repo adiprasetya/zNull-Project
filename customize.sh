@@ -7,7 +7,7 @@ if [[ ${checkingGG} = "" ]];then
 	echo -e "Installing zNull GG..."
 	su -c /system/bin/pm install -r $MODPATH/libraries/ZNL_GG.apk  &> /dev/null && echo -e "Done.\n" || echo -e "Failed to install GG.\n"
 else
-	echo "GG was installed on your Device, skipping.\n"
+	echo -e "GG was installed on your Device, skipping.\n"
 fi
 mv -f $MODPATH/libraries/zNull-PUBG_MOBILE_LITE.lua /data/media/0/.
 echo -e "You can use our script on Internal"
