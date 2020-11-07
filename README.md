@@ -21,6 +21,7 @@ link? soon xD
 
 ## Installation
 
+Use Latest version !!!
 
 Download from release and flash to magisk.
 
