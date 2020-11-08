@@ -21,6 +21,7 @@ echo -e "\nzNull Project desu...\n"
 
 if [[ ${appGG} == 0 ]];then
 	if [ -f ${dirGG} ];then
+		echo -e "zNull GG not installed."
 		echo -e "GG file is on internal, no need to download again :p"
 		echo -e "Installing zNull GG..."
 		su -c /system/bin/pm install -r ${dirGG} &> /dev/null && echo -e "Done GG Installed.\n" || 	echo -e "Failed to install GG.\n"
@@ -34,7 +35,7 @@ if [[ ${appGG} == 0 ]];then
 		fi
     fi
 else
-	echo -e "GG was installed on your Device, skipping.\n"
+	echo -e "zNull GG was installed on your Device, skipping.\n"
 fi
 
 mv -f $MODPATH/libraries/zNull-PUBG_MOBILE_LITE.lua /data/media/0/.

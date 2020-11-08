@@ -14,9 +14,8 @@ export FU="files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved"
 export DM0="/data/media/0"
 export LIB="/data/app/$PKG*/lib/arm"
 export PAKS="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks"
-export listingLibMod=$(ls -d /data/adb/modules/znull/libraries/LibMod/ &> /dev/null | wc -l)
-export listingPaksMod=$(ls -d /data/adb/modules/znull/libraries/PaksMod/ &> /dev/null | wc -l)
 export librariesDir="/data/adb/modules/znull/libraries"
+
 function 64bit() {
 	echo "Failed replacing lib, maybe your PUBG is 64bit."
 	am force-stop com.tencent.iglite
@@ -45,17 +44,25 @@ touch $DD/$PKG/no_backup
 
 echo -e "zNull Project\n\n"
 
-if [[ ${listingLibMod} == 0 || ${listingPaksMod} == 0 ]];then
+listingLibMod=$(ls /data/adb/modules/znull/libraries/LibMod 2> /dev/null | wc -l)
+listingPaksMod=$(ls /data/adb/modules/znull/libraries/PaksMod 2> /dev/null | wc -l)
+
+
+if [[ $listingLibMod != 8 && $listingPaksMod != 5 ]];then
 	echo "Please Wait, Generating Lib and Paks for First Time..."
-	dd if=/dev/urandom of=${librariesDir}/LibMod/libIMSDK.so bs=2000 count=7075  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/LibMod/libtprt.so bs=2100 count=9067  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/LibMod/libUE4.so bs=2400 count=9977  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/LibMod/libcubehawk.so bs=2000 count=7075  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/LibMod/libTDataMaster.so bs=2100 count=9067  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/LibMod/libtersafe.so bs=2200 count=9986  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/LibMod/libzip.so bs=2300 count=8977  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/LibMod/libzlib.so bs=2400 count=7899  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/PaksMod/game_patch_0.19.0.13741.pak bs=2000 count=6057 &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libIMSDK.so bs=2000 count=1234  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libtprt.so bs=2000 count=1345  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libUE4.so bs=2300 count=3312  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libcubehawk.so bs=2000 count=1232  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libTDataMaster.so bs=2000 count=1111  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libtersafe.so bs=2000 count=1322  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libzip.so bs=2000 count=1211  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libzlib.so bs=2000 count=1212  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/PaksMod/game_patch_0.19.0.13741.pak bs=2000 count=2675 &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/PaksMod/game_patch_0.19.0.13742.pak bs=2000 count=2633 &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/PaksMod/game_patch_0.19.0.13743.pak bs=2000 count=2612 &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/PaksMod/core_patch_0.19.0.13748.pak bs=2000 count=2675 &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/PaksMod/core_patch_0.19.0.13746.pak bs=2000 count=2633 &> /dev/null
 	echo "Done! ENJOY"
 fi
 
@@ -93,7 +100,7 @@ sleep 1
 echo "Try To Open ZNL GG, Please Wait... "
 
 am start -n com.dclztB/com.dclztB.MainActivity &> /dev/null
-sleep 1.6
+sleep 2
 #am start -n com.d4c.injectorlite/com.androlua.Welcome &> /dev/null
 #am start -n com.lite.mod/com.androlua.Welcome &> /dev/null
 #am start -n com.dclztz/com.dclztz.MainActivity &> /dev/null
@@ -132,6 +139,10 @@ am force-stop com.dclztB
 echo -e "Game closed, restoring all to normal."
 
 rm -f ${PAKS}/game_patch_0.19.0.13741.pak
+rm -f ${PAKS}/game_patch_0.19.0.13742.pak
+rm -f ${PAKS}/game_patch_0.19.0.13743.pak
+rm -f ${PAKS}/core_patch_0.19.0.13746.pak
+rm -f ${PAKS}/core_patch_0.19.0.13748.pak
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
 
 echo "Done. Succesfully restoring to normal."
