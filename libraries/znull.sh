@@ -6,13 +6,17 @@ echo -e 'RUN WITH ROOT PERMISSIONS !!!'
 exit
 fi
 
-clear
+clear -x;clear
+export PKG="com.tencent.iglite"
 export DD="/data/data"
 export DMAD="/data/media/0/Android/data"
-export PKG="com.tencent.iglite"
 export FU="files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved"
 export DM0="/data/media/0"
-
+export LIB="/data/app/$PKG*/lib/arm"
+export PAKS="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks"
+export listingLibMod=$(ls -d /data/adb/modules/znull/libraries/LibMod/ &> /dev/null | wc -l)
+export listingPaksMod=$(ls -d /data/adb/modules/znull/libraries/PaksMod/ &> /dev/null | wc -l)
+export librariesDir="/data/adb/modules/znull/libraries"
 function 64bit() {
 	echo "Failed replacing lib, maybe your PUBG is 64bit."
 	am force-stop com.tencent.iglite
@@ -40,8 +44,25 @@ touch $DD/$PKG/cache
 touch $DD/$PKG/no_backup
 
 echo -e "zNull Project\n\n"
+
+if [[ ${listingLibMod} == 0 || ${listingPaksMod} == 0 ]];then
+	echo "Please Wait, Generating Lib and Paks for First Time..."
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libIMSDK.so bs=2000 count=7075  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libtprt.so bs=2100 count=9067  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libUE4.so bs=2400 count=9977  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libcubehawk.so bs=2000 count=7075  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libTDataMaster.so bs=2100 count=9067  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libtersafe.so bs=2200 count=9986  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libzip.so bs=2300 count=8977  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/LibMod/libzlib.so bs=2400 count=7899  &> /dev/null
+	dd if=/dev/urandom of=${librariesDir}/PaksMod/game_patch_0.19.0.13741.pak bs=2000 count=6057 &> /dev/null
+	echo "Done! ENJOY"
+fi
+
 echo "Only PUBG MOBILE LITE 32bit!"
 
+rm -rf $DMAD/$PKG/files/login-identifier.txt
+rm -rf $DD/$PKG/databases
 
 #cp -F /data/media/0/PUBGMLITE/Paks/* /data/media/0/Android/data/com.tencent.iglite/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks/.
 
@@ -66,17 +87,20 @@ echo 3 > /proc/sys/vm/drop_caches
 afree=$(free -m | grep Mem | awk '{print $4}')
 echo "Ram Freed $((afree-bfree)) MB!"
 
+cp -f /data/adb/modules/znull/libraries/PaksMod/* ${PAKS}/. && echo "Succes copying Paks mod." || echo "Copying Paks mod Failed!"
+
 sleep 1
 echo "Try To Open ZNL GG, Please Wait... "
 
 am start -n com.dclztB/com.dclztB.MainActivity &> /dev/null
-sleep 1.8
+sleep 1.6
 #am start -n com.d4c.injectorlite/com.androlua.Welcome &> /dev/null
 #am start -n com.lite.mod/com.androlua.Welcome &> /dev/null
 #am start -n com.dclztz/com.dclztz.MainActivity &> /dev/null
 #am start -n com.lite.mod/com.androlua.Welcome &> /dev/null
 #am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 
+chmod 755 /data/data/com.tencent.iglite/lib/*
 echo "Try To Open Game, Please Wait..."
 
 am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
@@ -86,7 +110,7 @@ sleep 15
 
 am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 
-cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* /data/app/$PKG*/lib/arm/. && echo "Succes replacing lib." || 64bit
+cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. && echo "Succes replacing lib." || 64bit
 chmod 755 /data/data/com.tencent.iglite/lib/*
 
 am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
@@ -107,6 +131,7 @@ done
 am force-stop com.dclztB
 echo -e "Game closed, restoring all to normal."
 
+rm -f ${PAKS}/game_patch_0.19.0.13741.pak
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
 
 echo "Done. Succesfully restoring to normal."
