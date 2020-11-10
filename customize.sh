@@ -3,10 +3,9 @@
 appGG=$(ls -d /data/app/com.dclztB* | wc -l)
 dirGG="/data/media/0/Download/zNull_GG.apk"
 
-mkdir -p /data/media/Download
+mkdir -p /data/media/0/Download
 mkdir -p $MODPATH/system/bin
 mkdir -p $MODPATH/libraries/LibMod
-mkdir -p $MODPATH/libraries/PaksMod
 mv -f $MODPATH/libraries/znull.sh $MODPATH/system/bin/znull
 mv -f $MODPATH/libraries/adaway.sh $MODPATH/system/bin/adaway
 rm -rf $MODPATH/libraries/*.apk

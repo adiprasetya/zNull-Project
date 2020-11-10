@@ -1,6 +1,6 @@
 id=znull
-name=zNull Project - PUBG MOBILE LITE
-version=v0.2.7
+name=zNull-Module
+version=v0.3.0
 versionCode=1
 author=Adi Prasetya 彡
-description=Cheating only with MAGISK MODULE, i hope you enjoy the module. Usage: su -c znull
+description=Cheating PUBG MOBILE LITE only with MAGISK MODULE, i hope you enjoy the module. Usage: su -c znull

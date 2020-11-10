@@ -28,6 +28,8 @@ am force-stop com.google.android.inputmethod.latin
 #rm -rf $DMAD/$PKG/files/login-identifier.txt
 #rm -rf $DD/$PKG/databases
 
+rm -rf /data/media/0/Android/data/$PKG/cache 2> /dev/null
+
 rm -rf $DD/$PKG/files 
 rm -rf $DD/$PKG/app_crashrecord
 rm -rf $DD/$PKG/app_bugly
@@ -45,11 +47,10 @@ touch $DD/$PKG/no_backup
 echo -e "zNull Project\n\n"
 
 listingLibMod=$(ls /data/adb/modules/znull/libraries/LibMod 2> /dev/null | wc -l)
-listingPaksMod=$(ls /data/adb/modules/znull/libraries/PaksMod 2> /dev/null | wc -l)
 
 
-if [[ $listingLibMod != 8 && $listingPaksMod != 5 ]];then
-	echo "Please Wait, Generating Lib and Paks for First Time..."
+if [[ $listingLibMod != 8 ]];then
+	echo "Please Wait, Generating Lib Mod for First Time..."
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libIMSDK.so bs=2000 count=1234  &> /dev/null
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libtprt.so bs=2000 count=1345  &> /dev/null
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libUE4.so bs=2300 count=3312  &> /dev/null
@@ -58,19 +59,13 @@ if [[ $listingLibMod != 8 && $listingPaksMod != 5 ]];then
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libtersafe.so bs=2000 count=1322  &> /dev/null
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libzip.so bs=2000 count=1211  &> /dev/null
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libzlib.so bs=2000 count=1212  &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/PaksMod/game_patch_0.19.0.13741.pak bs=2000 count=2675 &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/PaksMod/game_patch_0.19.0.13742.pak bs=2000 count=2633 &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/PaksMod/game_patch_0.19.0.13743.pak bs=2000 count=2612 &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/PaksMod/core_patch_0.19.0.13748.pak bs=2000 count=2675 &> /dev/null
-	dd if=/dev/urandom of=${librariesDir}/PaksMod/core_patch_0.19.0.13746.pak bs=2000 count=2633 &> /dev/null
-	echo "Done! ENJOY"
+	echo -e "Done! ENJOY # NO CHEAT NO LIFE\n"
 fi
 
 echo "Only PUBG MOBILE LITE 32bit!"
 
-rm -rf $DMAD/$PKG/files/login-identifier.txt
-rm -rf $DD/$PKG/databases
-
+#rm -rf $DMAD/$PKG/files/login-identifier.txt
+#rm -rf $DD/$PKG/databases
 #cp -F /data/media/0/PUBGMLITE/Paks/* /data/media/0/Android/data/com.tencent.iglite/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks/.
 
 am force-stop com.wago
@@ -87,6 +82,7 @@ am force-stop com.orpheusdroid.screenrecorder
 am force-stop com.google.android.apps.nbu.files
 #am force-stop net.openvpn.openvpn
 #am force-stop ch.deletescape.lawnchair.ci
+am force-stop com.supercell.clashofclans
 
 # freeding memory
 bfree=$(free -m | grep Mem | awk '{print $4}')
@@ -94,10 +90,8 @@ echo 3 > /proc/sys/vm/drop_caches
 afree=$(free -m | grep Mem | awk '{print $4}')
 echo "Ram Freed $((afree-bfree)) MB!"
 
-cp -f /data/adb/modules/znull/libraries/PaksMod/* ${PAKS}/. && echo "Succes copying Paks mod." || echo "Copying Paks mod Failed!"
-
 sleep 1
-echo "Try To Open ZNL GG, Please Wait... "
+echo "Try To Open zNull GG, Please Wait... "
 
 am start -n com.dclztB/com.dclztB.MainActivity &> /dev/null
 sleep 2
@@ -113,19 +107,20 @@ echo "Try To Open Game, Please Wait..."
 am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
 
 echo "Please wait..."
-sleep 15
+sleep 18
 
 am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 
 cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. && echo "Succes replacing lib." || 64bit
 chmod 755 /data/data/com.tencent.iglite/lib/*
-
+am force-stop com.google.android.inputmethod.latin
+sleep 1
 am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
 
 clear
 echo -e "zNull Project\n\n"
 echo "Only PUBG MOBILE LITE 32bit!"
-echo -e "Game is already started...\n\n\n"
+echo -e "Game is already started...\n\n"
 
 while true
 do
@@ -138,11 +133,6 @@ done
 am force-stop com.dclztB
 echo -e "Game closed, restoring all to normal."
 
-rm -f ${PAKS}/game_patch_0.19.0.13741.pak
-rm -f ${PAKS}/game_patch_0.19.0.13742.pak
-rm -f ${PAKS}/game_patch_0.19.0.13743.pak
-rm -f ${PAKS}/core_patch_0.19.0.13746.pak
-rm -f ${PAKS}/core_patch_0.19.0.13748.pak
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
 
 echo "Done. Succesfully restoring to normal."
