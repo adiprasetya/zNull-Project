@@ -280,9 +280,11 @@ function LobbyAlert()
     if LA2 == 1 then
         bypass()
         bcwh()
+        mb()
         aim()
         less()
         as()
+        small()
     end
 end
 
