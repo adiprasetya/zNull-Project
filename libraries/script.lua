@@ -109,18 +109,29 @@ function fix()
         gg.editAll("2", gg.TYPE_FLOAT)
         gg.clearResults()
         gg.toast("Fixed ✔")
+    elseif gg.getResultCount() == 4 then
+        gg.getResults(2)
+        gg.editAll("2", gg.TYPE_FLOAT)
+        gg.clearResults()
+        gg.toast("Fixed ✔")
+    elseif gg.getResultCount() == 5 then
+        gg.getResults(3)
+        gg.editAll("2", gg.TYPE_FLOAT)
+        gg.clearResults()
+        gg.toast("Fixed ✔")
+    elseif gg.getResultCount() == 6 then
+        gg.getResults(4)
+        gg.editAll("2", gg.TYPE_FLOAT)
+        gg.clearResults()
+        gg.toast("Fixed ✔")
+    elseif gg.getResultCount() == 7 then
+        gg.getResults(5)
+        gg.editAll("2", gg.TYPE_FLOAT)
+        gg.clearResults()
+        gg.toast("Fixed ✔")
     else
         gg.toast("Nothing.")
         gg.clearResults()
-        if gg.getResultCount() == 4 then
-            gg.getResults(2)
-            gg.editAll("2", gg.TYPE_FLOAT)
-            gg.clearResults()
-            gg.toast("Fixed ✔")
-        else
-            gg.toast("Nothing.")
-            gg.clearResults()
-        end
     end
 end
 
@@ -269,7 +280,6 @@ function LobbyAlert()
     if LA2 == 1 then
         bypass()
         bcwh()
-        mb()
         aim()
         less()
         as()
