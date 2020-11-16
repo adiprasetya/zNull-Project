@@ -37,6 +37,8 @@ function HOME()
             "➤ WALLHACK & COLOR【 Lobby 】",
             "➤ FLASH SPEED【 Game 】" .. flash,
             "➤ FAST PARACHUTE【 Island 】",
+            "➤ Magic Bullet【 EveryMatch 】",
+            "➤ Other Cheats...",
             "☣ ＥＸＩＴ ☣"
         }
     )
@@ -53,10 +55,73 @@ function HOME()
             fp()
         end
         if MENU == 4 then
+            mb()
+        end
+        if MENU == 5 then
+            other()
+        end
+        if MENU == 6 then
             exit()
         end
     end
     PUBGMLH = -1
+end
+
+function other()
+    OTHERMENU =
+        gg.multiChoice(
+        {
+            "➭ Antena [idk]",
+            "➭ Less Recoil [Lobby]",
+            "➭ Aimbot Close Range [Lobby]",
+            "➭ Magic Bullet [Lobby]",
+            "➭ Anti Shake [Lobby]",
+            "➭ Small Crosshair [Lobby]",
+            "➭ Fast Parachute [Island]",
+            "➭ Speed UAZ [InVehicle] ",
+            "➭ Speed Dacia [InVehicle] ",
+            "➭ Flash Speed Player [InGame] " .. flash,
+            "☣ Back ☣"
+        }
+    )
+
+    if OTHERMENU == nil then
+    else
+        if OTHERMENU[1] == true then
+            ant()
+        end
+        if OTHERMENU[2] == true then
+            less()
+        end
+        if OTHERMENU[3] == true then
+            aim()
+        end
+        if OTHERMENU[4] == true then
+            mb()
+        end
+        if OTHERMENU[5] == true then
+            as()
+        end
+        if OTHERMENU[6] == true then
+            small()
+        end
+        if OTHERMENU[7] == true then
+            fp()
+        end
+        if OTHERMENU[8] == true then
+            uaz()
+        end
+        if OTHERMENU[9] == true then
+            dacia()
+        end
+        if OTHERMENU[10] == true then
+            fs()
+        end
+        if OTHERMENU[11] == true then
+            HOME()
+        end
+    end
+    PUBGMH = -1
 end
 
 on = "丨【 ON 】"
@@ -96,7 +161,50 @@ function bcwh()
         gg.toast("WallHack ✔")
     end
 end
--- end
+
+function ant()
+    gg.setVisible(false)
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.searchNumber(
+        "0.98900693655~0.98900723457;0.14786802232~0.14786840975;1.1920926e-7::9",
+        gg.TYPE_FLOAT,
+        false,
+        gg.SIGN_EQUAL,
+        0,
+        -1
+    )
+    gg.searchNumber("0.98900693655~0.98900723457", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+    gg.getResults(100)
+    gg.editAll("16000", gg.TYPE_FLOAT)
+    gg.clearResults()
+    gg.toast("Antena idk")
+end
+
+function uaz()
+    gg.clearResults()
+    gg.setRanges(32)
+    gg.searchNumber("0.647058857;0.30000001192;0.94117647409::9", 16, false, 536870912, 0, -1)
+    gg.searchNumber("0.647058857;0.30000001192::5", 16, false, 536870912, 0, -1)
+    gg.searchNumber("0.647058857;0.30000001192::5", 16, false, 536870912, 0, -1)
+    gg.searchNumber("0.647058857;0.30000001192::5", 16, false, 536870912, 0, -1)
+    gg.getResults(50)
+    gg.editAll("100.241295", 16)
+    gg.clearResults()
+    gg.toast("Speed UAZ ✔")
+end
+
+function dacia()
+    gg.clearResults()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.searchNumber("1000;10;4D;4D;50;5;2;0.03::", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+    gg.searchNumber("0.03", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+    gg.searchNumber("0.03", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+    gg.searchNumber("0.03", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+    gg.getResults(280)
+    gg.editAll("-0.23", gg.TYPE_FLOAT)
+    gg.clearResults()
+    gg.toast("Speed Dacia ✔")
+end
 
 function fix()
     gg.clearResults()
@@ -152,6 +260,20 @@ function bypass()
 end
 
 function mb()
+    gg.clearResults()
+    gg.setRanges(gg.REGION_ANONYMOUS)
+    gg.searchNumber("h B8 41 00 00 C8 41 00 00 F4 41", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1)
+    gg.getResults(gg.getResultsCount())
+    if gg.getResultsCount() == 0 then
+        gg.toast("Magic Bullet maybe active")
+    else
+        gg.toast("Magic Bullet ✔")
+        gg.editAll("h B8 41 00 00 2F 44 00 00 2F 44", gg.TYPE_BYTE)
+        gg.clearResults()
+    end
+end
+
+function mbroken()
     gg.clearResults()
     gg.setRanges(gg.REGION_ANONYMOUS)
     gg.searchNumber("25;30.5", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
@@ -284,7 +406,6 @@ function LobbyAlert()
         aim()
         less()
         as()
-        small()
     end
 end
 
