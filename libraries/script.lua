@@ -11,7 +11,7 @@ gg.setVisible(false)
 if gg.PACKAGE == "com.dclztB" then
     gg.clearResults()
 else
-    print("ㅤ\n🇲🇨zNull🇲🇨\nUse zNull GameGuardian 👊😎.\nXD")
+    print("ㅤ\n🇲🇨zNull🇲🇨\nUse zNull GG 👊😎.\nXD")
     os.exit()
 end
 
@@ -71,7 +71,7 @@ function other()
     OTHERMENU =
         gg.multiChoice(
         {
-            "➭ Antena [idk]",
+            "➭ Antena Head [InGame]",
             "➭ Less Recoil [Lobby]",
             "➭ Aimbot Close Range [Lobby]",
             "➭ Magic Bullet [Lobby]",
@@ -177,7 +177,7 @@ function ant()
     gg.getResults(100)
     gg.editAll("16000", gg.TYPE_FLOAT)
     gg.clearResults()
-    gg.toast("Antena idk")
+    gg.toast("Antena Head ✔")
 end
 
 function uaz()
