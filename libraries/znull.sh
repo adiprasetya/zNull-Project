@@ -13,7 +13,8 @@ export DMAD="/data/media/0/Android/data"
 export FU="files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved"
 export DM0="/data/media/0"
 export LIB="/data/app/$PKG*/lib/arm"
-export PAKS="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks"
+SRC="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/SrcVersion.ini"
+PAKS="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks"
 export librariesDir="/data/adb/modules/znull/libraries"
 
 function 64bit() {
@@ -84,6 +85,16 @@ am force-stop com.google.android.apps.nbu.files
 #am force-stop ch.deletescape.lawnchair.ci
 am force-stop com.supercell.clashofclans
 
+echo "Generating fake SRC..."
+rm -rf $SRC
+echo "[version]
+appversion=0.20.0.13777
+srcversion=0.20.0.99999." > $SRC
+echo "GOBLOK
+branch_name = trunk_stable" > $PAKS/core_patch_0.20.0.99999.pak
+chmod -Rf 550 /data/media/0/Android/data/com.tencent.ig/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/SrcVersion.ini
+chmod -Rf 550 /data/media/0/Android/data/com.tencent.ig/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks
+
 # freeding memory
 bfree=$(free -m | grep Mem | awk '{print $4}')
 echo 3 > /proc/sys/vm/drop_caches
@@ -107,7 +118,7 @@ echo "Try To Open Game, Please Wait..."
 am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
 
 echo "Please wait..."
-sleep 18
+sleep 25
 
 am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 
@@ -133,6 +144,11 @@ done
 am force-stop com.dclztB
 echo -e "Game closed, restoring all to normal."
 
+chmod 777 $SRC
+chmod -Rf 777 $PAKS
+rm -rf $PAKS/core_patch_0.20.0.99999.pak
+rm -rf $SRC
+chmod -Rf 775 $PAKS
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
 
 echo "Done. Succesfully restoring to normal."

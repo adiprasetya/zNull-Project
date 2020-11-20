@@ -35,7 +35,7 @@ function HOME()
         gg.choice(
         {
             "➤ WALLHACK & COLOR【 Lobby 】",
-            "➤ FLASH SPEED【 Game 】" .. flash,
+            "➤ FLASH SPEED【 broken:) 】" .. flash,
             "➤ FAST PARACHUTE【 Island 】",
             "➤ Magic Bullet【 EveryMatch 】",
             "➤ Other Cheats...",
@@ -72,15 +72,15 @@ function other()
         gg.multiChoice(
         {
             "➭ Antena Head [InGame]",
-            "➭ Less Recoil [Lobby]",
-            "➭ Aimbot Close Range [Lobby]",
-            "➭ Magic Bullet [Lobby]",
-            "➭ Anti Shake [Lobby]",
-            "➭ Small Crosshair [Lobby]",
+            "➭ Less Recoil [broken]",
+            "➭ Aimbot Close Range [broken]",
+            "➭ Magic Bullet [EveryMatch]",
+            "➭ Anti Shake [broken]",
+            "➭ Small Crosshair [broken]",
             "➭ Fast Parachute [Island]",
             "➭ Speed UAZ [InVehicle] ",
             "➭ Speed Dacia [InVehicle] ",
-            "➭ Flash Speed Player [InGame] " .. flash,
+            "➭ Flash Speed Player [broken] " .. flash,
             "☣ Back ☣"
         }
     )
@@ -265,7 +265,7 @@ function mb()
     gg.searchNumber("h B8 41 00 00 C8 41 00 00 F4 41", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1)
     gg.getResults(gg.getResultsCount())
     if gg.getResultsCount() == 0 then
-        gg.toast("Magic Bullet maybe active")
+        gg.toast("Value Magic Bullet\n[X] Not Found!")
     else
         gg.toast("Magic Bullet ✔")
         gg.editAll("h B8 41 00 00 2F 44 00 00 2F 44", gg.TYPE_BYTE)
@@ -403,9 +403,6 @@ function LobbyAlert()
         bypass()
         bcwh()
         mb()
-        aim()
-        less()
-        as()
     end
 end
 
