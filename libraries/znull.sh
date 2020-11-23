@@ -92,8 +92,8 @@ appversion=0.20.0.13777
 srcversion=0.20.0.99999." > $SRC
 echo "GOBLOK
 branch_name = trunk_stable" > $PAKS/core_patch_0.20.0.99999.pak
-chmod -Rf 550 /data/media/0/Android/data/com.tencent.ig/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/SrcVersion.ini
-chmod -Rf 550 /data/media/0/Android/data/com.tencent.ig/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks
+chmod -Rf 550 $SRC
+chmod -Rf 550 $PAKS
 
 # freeding memory
 bfree=$(free -m | grep Mem | awk '{print $4}')
