@@ -16,6 +16,7 @@ ROOT ONLY WITH [MAGISK](https://github.com/topjohnwu/Magisk "Magisk Github") ! x
 Installed Module [Busybox Android NDK](https://github.com/Magisk-Modules-Repo/busybox-ndk "Busybox Android NDK Magisk Repo") and [GNU Utils Android.](https://github.com/adiprasetya/zNull-Project/releases/tag/v4.6 "GNU Utils Android Download")
 
 
+for Now, only support PUBG MOBILE LITE. soon will be added PUBG MOBILE GLOBAL, KOREA, VIETNAM, TAIWAN, INDIA.
 
 ## Installation
 
