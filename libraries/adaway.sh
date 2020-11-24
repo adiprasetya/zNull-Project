@@ -8,7 +8,6 @@ fi
 
 name="hosts"
 dir="/system/etc"
-dlDir="/data/adb/modules/znull/adaway"
 source="https://adaway.org/hosts.txt"
 
 if [[ $(which curl) == "" ]]; then
@@ -17,17 +16,19 @@ if [[ $(which curl) == "" ]]; then
 	if [[ $(which wget) == "" ]]; then
 		echo -e "ERROR, wget command not found too.\n" && exit 1
 	else
-		mkdir -p $dlDir
 		echo -e "\nDownloading and Patching AdBlocker by Adaway..."
 		sleep 1
-		wget -q -O $dlDir/$name $source  &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet.\n" 
-		mv -f $dlDir/$name $dir/. &> /dev/null
+		chmod 777 $dir/$name
+		wget -q -O $dir/$name $source  &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet.\n" 
+		chmod 644 $dir/$name
 		sleep 1
 	fi
 else 
 # download hosts file using curl
 	echo -e "\nDownloading and Patching AdBlocker by Adaway..."
 	sleep 1
+	chmod 777 $dir/$name
 	curl -s -o $dir/$name $source &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet.\n" 
+	chmod 644 $dir/$name
 	sleep 1
 fi

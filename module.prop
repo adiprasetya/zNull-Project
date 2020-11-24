@@ -1,6 +1,6 @@
 id=znull
 name=zNull-Module
-version=v0.3.6
+version=v0.3.7
 versionCode=1
 author=Adi Prasetya 彡
 description=Tools for bypassing Anti Cheat. Usage: su -c znull
