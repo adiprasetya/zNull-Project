@@ -18,17 +18,13 @@ if [[ $(which curl) == "" ]]; then
 	else
 		echo -e "\nDownloading and Patching AdBlocker by Adaway..."
 		sleep 1
-		chmod 777 $dir/$name
 		wget -q -O $dir/$name $source  &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet.\n" 
-		chmod 644 $dir/$name
 		sleep 1
 	fi
 else 
 # download hosts file using curl
 	echo -e "\nDownloading and Patching AdBlocker by Adaway..."
 	sleep 1
-	chmod 777 $dir/$name
 	curl -s -o $dir/$name $source &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet.\n" 
-	chmod 644 $dir/$name
 	sleep 1
 fi

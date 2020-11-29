@@ -37,8 +37,17 @@ else
 	echo -e "zNull GG was installed on your Device, skipping.\n"
 fi
 
-mv -f $MODPATH/libraries/zNull-PUBG_MOBILE_LITE.lua /data/media/0/.
-echo -e "You can use our script on Internal"
-echo -e "Usage: su -c znull or su > znull\n"
+if [[ -f /data/media/0/Android/znull.conf ]]; then
+	echo -e "znull.conf already on /Internal/Android/znull.conf, skipping.\n"
+	rm $MODPATH/libraries/znull.conf
+else
+	mv -f $MODPATH/libraries/znull.conf /data/media/0/Android/.
+	echo -e "You can change package name on /Internal/Android/znull.conf\n"
+fi
 
+mv -f $MODPATH/libraries/zNull-PUBG_MOBILE_LITE.lua /data/media/0/.
+echo -e "You can use our script on Internal.\nOur script is OnLy for PUBG MOBILE LITE !"
+echo -e "Usage: su -c znull or su > znull"
+echo -e "		su -c znull [-s|set] or su > znull [-s|set]\n"
+echo -e "Not for newbie, sorry :)\n"
  

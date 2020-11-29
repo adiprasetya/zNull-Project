@@ -7,21 +7,102 @@ exit
 fi
 
 clear -x;clear
-export PKG="com.tencent.iglite"
+
+echo -e "zNull Project\n\n"
+echo "Only PUBG MOBILE 32bit!"
+
+if [[ -f /data/media/0/Android/znull.conf ]]; then
+	source /data/media/0/Android/znull.conf
+else
+	echo "znull.conf not found! Don't delete the config! reflash zNull Module!"
+	exit 1
+fi
+
+if [[ "$1" == "-s" || "$1" == "set" ]]; then
+	if [[ "$2" == "1" ]]; then
+		sed -i 's/PKG=.*/PKG="com.tencent.iglite"/g' /data/media/0/Android/znull.conf
+		echo
+		echo "znull.conf Setted to PUBG MOBILE LITE!"
+		echo
+		exit
+	elif [[ "$2" == "2" ]]; then
+		sed -i 's/PKG=.*/PKG="com.tencent.ig"/g' /data/media/0/Android/znull.conf
+		echo
+		echo "znull.conf Setted to PUBG MOBILE GLOBAL!"
+		echo
+		exit
+	elif [[ "$2" == "3" ]]; then
+		sed -i 's/PKG=.*/PKG="com.pubg.krmobile"/g' /data/media/0/Android/znull.conf
+		echo
+		echo "znull.conf Setted to PUBG MOBILE KOREA!"
+		echo
+		exit
+	elif [[ "$2" == "4" ]]; then
+		sed -i 's/PKG=.*/PKG="com.vng.pubgmobile"/g' /data/media/0/Android/znull.conf
+		echo
+		echo "znull.conf Setted to PUBG MOBILE VIETNAM!"
+		echo
+		exit
+	else
+		echo "LIST SUPPORTED PUBG MOBILE!"
+		echo "1. PUBG MOBILE LITE"
+		echo "2. PUBG MOBILE GLOBAL"
+		echo "3. PUBG MOBILE KOREA"
+		echo "4. PUBG MOBILE VIETNAM"
+		echo
+		echo "Usage: znull [-s|set] [number]" 
+		echo "Example: znull set 2 ( znull.conf will be changed to PUBG MOBILE GLOBAL )"
+		echo
+		exit 1
+	fi
+fi
+
 export DD="/data/data"
 export DMAD="/data/media/0/Android/data"
 export FU="files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved"
 export DM0="/data/media/0"
-export LIB="/data/app/$PKG*/lib/arm"
+export LIB="/data/app/${PKG}-*/lib/arm"
 SRC="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/SrcVersion.ini"
 PAKS="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks"
 export librariesDir="/data/adb/modules/znull/libraries"
+
+appPUBG=$(ls -d /data/app/$PKG*/ | wc -l)
+lib32bit=$(ls -d $LIB/* | wc -l)
+
+if [[ $appPUBG == 0 ]]; then
+	if [[ $PKG == com.tencent.iglite ]]; then
+		echo -e "You don't have a PUBG MOBILE LITE!\nYou can change on /Internal/Android/znull.conf or you can use command: znull [-s|set]"
+		exit 1
+	elif  [[ $PKG == com.tencent.ig ]]; then
+		echo -e "You don't have a PUBG MOBILE GLOBAL!\nYou can change on /Internal/Android/znull.conf or you can use command: znull [-s|set]"
+		exit 1
+	elif  [[ $PKG == com.pubg.krmobile ]]; then
+		echo -e "You don't have a PUBG MOBILE KOREA!\nYou can change on /Internal/Android/znull.conf or you can use command: znull [-s|set]"
+		exit 1
+	elif  [[ $PKG == com.vng.pubgmobile ]]; then
+		echo -e "You don't have a PUBG MOBILE VIETNAM!\nYou can change on /Internal/Android/znull.conf or you can use command: znull [-s|set]"
+		exit 1
+	else
+		echo "WHAT IS ${PKG}, its package name PUBG?\nChange! on /Internal/Android/znull.conf or you can use command: znull [-s|set]"
+		exit 1
+	fi
+else
+	if [[ $lib32bit == 0 ]]; then
+		echo "Your PUBG is 64bit. not support, sorry :v"
+		exit 1
+	fi
+fi
 
 function 64bit() {
 	echo "Failed replacing lib, maybe your PUBG is 64bit."
 	am force-stop com.tencent.iglite
 	am force-stop com.dclztB
 	su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk
+	echo "Done. Succesfully restoring to normal."
+	sleep 1
+	echo "Exiting automatically in 5 seconds, CTRL + C for canceling."
+	sleep 5
+	am force-stop com.termux
 	exit
 }
 
@@ -45,7 +126,6 @@ touch $DD/$PKG/code_cache
 touch $DD/$PKG/cache
 touch $DD/$PKG/no_backup
 
-echo -e "zNull Project\n\n"
 
 listingLibMod=$(ls /data/adb/modules/znull/libraries/LibMod 2> /dev/null | wc -l)
 
@@ -60,10 +140,10 @@ if [[ $listingLibMod != 8 ]];then
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libtersafe.so bs=2000 count=1322  &> /dev/null
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libzip.so bs=2000 count=1211  &> /dev/null
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libzlib.so bs=2000 count=1212  &> /dev/null
-	echo -e "Done! ENJOY # NO CHEAT NO LIFE\n"
+	echo -e "Done! ENJOY # NO CHEAT NO LIFE\nEvery UPDATE module, lib mod will be disappear :v\n"
 fi
 
-echo "Only PUBG MOBILE LITE 32bit!"
+
 
 #rm -rf $DMAD/$PKG/files/login-identifier.txt
 #rm -rf $DD/$PKG/databases
@@ -85,15 +165,15 @@ am force-stop com.google.android.apps.nbu.files
 #am force-stop ch.deletescape.lawnchair.ci
 am force-stop com.supercell.clashofclans
 
-echo "Generating fake SRC..."
-rm -rf $SRC
-echo "[version]
-appversion=0.20.0.13777
-srcversion=0.20.0.99999." > $SRC
-echo "GOBLOK
-branch_name = trunk_stable" > $PAKS/core_patch_0.20.0.99999.pak
-chmod -Rf 550 $SRC
-chmod -Rf 550 $PAKS
+#echo "Generating fake SRC..."
+#rm -rf $SRC
+#echo "[version]
+#appversion=0.20.0.13777
+#srcversion=0.20.0.99999." > $SRC
+# echo "GOBLOK
+#branch_name = trunk_stable > $PAKS/core_patch_0.20.0.99999.pak
+#chmod -Rf 550 $SRC
+#chmod -Rf 550 $PAKS
 
 # freeding memory
 bfree=$(free -m | grep Mem | awk '{print $4}')
@@ -115,7 +195,7 @@ sleep 2
 chmod 755 /data/data/com.tencent.iglite/lib/*
 echo "Try To Open Game, Please Wait..."
 
-am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
+am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
 
 echo "Please wait..."
 sleep 25
@@ -126,11 +206,11 @@ cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. &
 chmod 755 /data/data/com.tencent.iglite/lib/*
 am force-stop com.google.android.inputmethod.latin
 sleep 1
-am start -n com.tencent.iglite/com.epicgames.ue4.SplashActivity &> /dev/null
+am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
 
 clear
 echo -e "zNull Project\n\n"
-echo "Only PUBG MOBILE LITE 32bit!"
+echo "Only PUBG MOBILE 32bit!"
 echo -e "Game is already started...\n\n"
 
 while true
@@ -144,11 +224,11 @@ done
 am force-stop com.dclztB
 echo -e "Game closed, restoring all to normal."
 
-chmod 777 $SRC
-chmod -Rf 777 $PAKS
-rm -rf $PAKS/core_patch_0.20.0.99999.pak
-rm -rf $SRC
-chmod -Rf 775 $PAKS
+#chmod 777 $SRC
+#chmod -Rf 777 $PAKS
+#rm -rf $PAKS/core_patch_0.20.0.99999.pak
+#rm -rf $SRC
+#chmod -Rf 775 $PAKS
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
 
 echo "Done. Succesfully restoring to normal."
