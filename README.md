@@ -24,7 +24,8 @@ Installed Module [Busybox Android NDK](https://github.com/Magisk-Modules-Repo/bu
 Use Latest version !!!
 
 Download from release and flash to magisk.
-
+or
+from our [Telegram Channel](https://t.me/zNullProject_Channel "Our Telegram Channel, zNull | Updates")
 
 ## Usage
 
