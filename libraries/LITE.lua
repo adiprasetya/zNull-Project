@@ -121,14 +121,7 @@ end
 function antheadL()
     gg.setVisible(false)
     gg.setRanges(gg.REGION_ANONYMOUS)
-    gg.searchNumber(
-        "0.98900693655~0.98900723457;0.14786802232~0.14786840975;1.1920926e-7::9",
-        gg.TYPE_FLOAT,
-        false,
-        gg.SIGN_EQUAL,
-        0,
-        -1
-    )
+    gg.searchNumber("0.98900693655~0.98900723457;0.14786802232~0.14786840975;1.1920926e-7::9", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
     gg.searchNumber("0.98900693655~0.98900723457", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
     gg.getResults(100)
     gg.editAll("16000", gg.TYPE_FLOAT)

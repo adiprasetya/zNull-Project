@@ -15,7 +15,6 @@ function HOMEG()
     MENUG =
         gg.choice(
         {
-            "➤ Wallhack & Color【 Lobby 】",
             "➤ Memory Freeze【 Lobby 】",
             "➤ Magic Bullet【 EveryMatch 】",
             "➤ Other Cheats...",
@@ -27,18 +26,15 @@ function HOMEG()
     if MENUG == nil then
     else
         if MENUG == 1 then
-            bcwhG()
-        end
-        if MENUG == 2 then
             bypassG()
         end
-        if MENUG == 3 then
+        if MENUG == 2 then
             mbL()
         end
-        if MENUG == 4 then
+        if MENUG == 3 then
             otherG()
         end
-        if MENUG == 5 then
+        if MENUG == 4 then
             exit()
         end
     end
