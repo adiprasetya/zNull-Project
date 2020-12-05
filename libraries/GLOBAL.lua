@@ -16,7 +16,6 @@ function HOMEG()
         gg.choice(
         {
             "➤ Memory Freeze【 Lobby 】",
-            "➤ Magic Bullet【 EveryMatch 】",
             "➤ Other Cheats...",
             "☣ ＥＸＩＴ ☣"
         },
@@ -29,12 +28,9 @@ function HOMEG()
             bypassG()
         end
         if MENUG == 2 then
-            mbL()
-        end
-        if MENUG == 3 then
             otherG()
         end
-        if MENUG == 4 then
+        if MENUG == 3 then
             exit()
         end
     end
@@ -244,7 +240,6 @@ function LobbyAlertG()
     LAG = gg.alert("\n☣ ＬＯＢＢＹ ☣", "☣ YES ☣", "☣ NO ☣")
     if LAG == 1 then
         bypassG()
-        mbL()
         mbG()
         lessG()
         rmfogG()
