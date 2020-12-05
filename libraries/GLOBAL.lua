@@ -244,7 +244,6 @@ function LobbyAlertG()
     LAG = gg.alert("\n☣ ＬＯＢＢＹ ☣", "☣ YES ☣", "☣ NO ☣")
     if LAG == 1 then
         bypassG()
-        bcwhG()
         mbL()
         mbG()
         lessG()

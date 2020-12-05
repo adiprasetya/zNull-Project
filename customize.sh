@@ -21,8 +21,8 @@ else
 	echo -e "You can change package name on Internal/Android/znull.conf\nor use znull [-s|set].\n"
 fi
 
-mv -f $MODPATH/libraries/zNull-PUBG_MOBILE_LITE.lua /data/media/0/.
-echo -e "You can use our script on Internal.\nOur script is OnLy for PUBG MOBILE LITE !"
+mv -f $MODPATH/libraries/zNull-SCRIPT.lua /data/media/0/.
+echo -e "You can use our script on Internal.\nOur script is OnLy for PUBG MOBILE LITE and GLOBAL!"
 echo -e "Usage: su -c znull [-h|help|--help]"
 echo -e "Not for noob, sorry :v\n"
  
