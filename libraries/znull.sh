@@ -1,9 +1,8 @@
 #!/system/bin/sh
 
-if [ "$(whoami)" != "root" ]
-then
-echo -e 'RUN WITH ROOT PERMISSIONS !!!'
-exit
+if [ "$(whoami)" != "root" ];then
+	echo -e 'RUN WITH ROOT PERMISSIONS !!!'
+	exit 1
 fi
 
 clear -x;clear
@@ -99,48 +98,45 @@ else
 fi
 
 
-
+resetGuest() {
+    sed -E "s/(^\s*.*uuid.*>)(.*)(<.*)/\1$RANDOM$RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM$RANDOM$RANDOM\3/" /data/data/$PKG/shared_prefs/device_id.xml
+}
 
 
 if [[ "$1" == "-r" || "$1" == "reset" ]]; then
-	resetGuest="<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
-<map>
-    <string name=\"random\"></string>
-    <string name=\"install\"></string>
-    <string name=\"uuid\">$RANDOM$RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM$RANDOM$RANDOM</string>
-</map>"
+
 	znull="/data/data/$PKG/shared_prefs/device_id.xml"
 	if [[ $PKG == com.tencent.iglite ]]; then
 		am force-stop $PKG
 		rm -rf $znull
-		echo "${resetGuest}" > $znull
+		resetGuest
 		rm -rf /data/data/$PKG/databases
 		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt
-		echo -e "\nGuest PUBG MOBILE LITE Resetted.\n"
+		echo -e "Guest PUBG MOBILE LITE Resetted.\n"
 		exit
 	elif  [[ $PKG == com.tencent.ig ]]; then
 		am force-stop $PKG
 		rm -rf $znull
-		echo "${resetGuest}" > $znull
+		resetGuest
 		rm -rf /data/data/$PKG/databases
 		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt
-		echo -e "\nGuest PUBG MOBILE GLOBAL Resetted.\n"
+		echo -e "Guest PUBG MOBILE GLOBAL Resetted.\n"
 		exit
 	elif  [[ $PKG == com.pubg.krmobile ]]; then
 		am force-stop $PKG
 		rm -rf $znull
-		echo "${resetGuest}" > $znull
+		resetGuest
 		rm -rf /data/data/$PKG/databases
 		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt
-		echo -e "\nGuest PUBG MOBILE KOREA Resetted.\n"
+		echo -e "Guest PUBG MOBILE KOREA Resetted.\n"
 		exit
 	elif  [[ $PKG == com.vng.pubgmobile ]]; then
 		am force-stop $PKG
 		rm -rf $znull
-		echo "${resetGuest}" > $znull
+		resetGuest
 		rm -rf /data/data/$PKG/databases
 		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt
-		echo -e "\nGuest PUBG MOBILE VIETNAM Resetted.\n"
+		echo -e "Guest PUBG MOBILE VIETNAM Resetted.\n"
 		exit
 	else
 		echo "WHAT IS ${PKG}, its package name PUBG?\nChange! on Internal/Android/znull.conf or you can use command: znull [-s|set]"
@@ -273,7 +269,7 @@ else
 		echo "How to set? Usage: znull gg [packagename]"
 	else
 		echo "Try To Open GG, Please Wait... "
-		am start -n ${GG}/${GG}.MainActivity &> /dev/null
+		am start -n ${GG}/${GG}.MainActivity &> /dev/null && echo "Succes Launching GG..." || echo "Failed Launching GG, maybe the packagename isn't GG!"
 		sleep 2
 	fi
 fi
@@ -320,7 +316,18 @@ am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
 function closing() {
 clear
 echo -e "zNull Project\n\n"
-echo "Only PUBG MOBILE 32bit!"
+		echo -e "PUBG MOBILE LITE 32bit!."
+	elif  [[ $PKG == com.tencent.ig ]]; then
+		echo -e "PUBG MOBILE GLOBAL 32bit!."
+	elif  [[ $PKG == com.pubg.krmobile ]]; then
+		echo -e "PUBG MOBILE KOREA 32bit!."
+	elif  [[ $PKG == com.vng.pubgmobile ]]; then
+		echo -e "PUBG MOBILE VIETNAM 32bit!."
+	else
+		echo "WHAT IS ${PKG}, its package name PUBG?\nChange! on Internal/Android/znull.conf or you can use command: znull [-s|set]"
+		exit 1
+	fi
+fi
 echo -e "Game is already started...\n\n"
 
 while true
