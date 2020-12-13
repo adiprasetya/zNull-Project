@@ -21,7 +21,7 @@ else
 fi
 
 if [[ -f /data/media/0/znull-SCRIPT.lua ]]; then
-    
+    rm -rf $MODPATH/libraries/*.lua
 else
     mv -f $MODPATH/libraries/zNull-SCRIPT.lua /data/media/0/. && echo -e "You can use our script on Internal.\nOur script is OnLy for PUBG MOBILE LITE and GLOBAL!"
 fi
