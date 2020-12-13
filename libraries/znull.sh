@@ -215,7 +215,7 @@ touch $DD/$PKG/files
 
 listingLibMod=$(ls /data/adb/modules/znull/libraries/LibMod 2> /dev/null | wc -l)
 
-
+function checklibMod() {
 if [[ $listingLibMod != 7 ]];then
 	echo "Please Wait, Generating Lib Mod for First Time..."
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libUE4.so bs=5500 count=18899  &> /dev/null
@@ -227,6 +227,7 @@ if [[ $listingLibMod != 7 ]];then
 	dd if=/dev/urandom of=${librariesDir}/LibMod/libtprt.so bs=2400 count=7899  &> /dev/null
 	echo -e "Done! Happy Cheating without ban :v (if ban, sorry wwwww)\nEvery UPDATE module, lib mod will be disappear :v\n"
 fi
+}
 
 #rm -rf $DMAD/$PKG/files/login-identifier.txt
 #rm -rf $DD/$PKG/databases
@@ -367,6 +368,7 @@ am force-stop com.termux
 	if [[ $PKG == com.tencent.iglite ]]; then
 		am force-stop $PKG
 		echo -e "PUBG MOBILE LITE Detected.\n"
+		checklibMod
 		fixfc
 		disablingapps
 		freedingmemory
@@ -377,6 +379,7 @@ am force-stop com.termux
 		exit
 	elif  [[ $PKG == com.tencent.ig ]]; then
 		echo -e "PUBG MOBILE GLOBAL Detected.\n"
+		checklibMod
 		fixfc
 		disablingapps
 		freedingmemory
@@ -388,6 +391,7 @@ am force-stop com.termux
 	elif  [[ $PKG == com.pubg.krmobile ]]; then
 		am force-stop $PKG
 		echo -e "PUBG MOBILE KOREA Detected.\n"
+		checklibMod
 		fixfc
 		disablingapps
 		freedingmemory
@@ -399,6 +403,7 @@ am force-stop com.termux
 	elif  [[ $PKG == com.vng.pubgmobile ]]; then
 		am force-stop $PKG
 		echo -e "PUBG MOBILE VIETNAM Detected.\n"
+		checklibMod
 		fixfc
 		disablingapps
 		freedingmemory
