@@ -6,8 +6,11 @@ Cheating PUBG MOBILE LITE using Magisk Module, i hope you enjoy the module xD.
 
 just simple script for cheating, only replace and Anti Banned :v (maybe), so use guest account for tests before using main id.
 
-
-for Now, only support PUBG MOBILE LITE, GLOBAL, KOREA, VIETNAM. soon will be added PUBG MOBILE TAIWAN, INDIA.
+### LIST SUPPORTED PUBG MOBILE!
+1. PUBG MOBILE LITE
+2. PUBG MOBILE GLOBAL
+3. PUBG MOBILE KOREA
+4. PUBG MOBILE VIETNAM
 
 ## Requirements
 
@@ -32,6 +35,8 @@ from our [Telegram Channel](https://t.me/zNullProject_Channel "Our Telegram Chan
 ```bash
 > su -c znull
 > su -c znull [-s|set] [number]
+> su -c znull [-r|reset]
+> su -c znull [-h|help|--help]
 ```
 
 ### Adaway AdBlocker
@@ -41,18 +46,27 @@ from our [Telegram Channel](https://t.me/zNullProject_Channel "Our Telegram Chan
 
 ## Example
 
-LIST SUPPORTED PUBG MOBILE!
-1. PUBG MOBILE LITE
-2. PUBG MOBILE GLOBAL
-3. PUBG MOBILE KOREA
-4. PUBG MOBILE VIETNAM
-
-command changing the znull.conf to PUBG MOBILE GLOBAL.
+### Changing the znull.conf to PUBG MOBILE LITE.
 ```bash
-> su -c znull -s 2
+> su -c znull -s 1
 ```
 or
 ```bash
-> su -c znull set 2
+> su -c znull set 1
 ```
+
+
+### Reset Guest with now znull.conf
+```bash
+> su -c znull -r
+```
+or
+```bash
+> su -c znull reset
+```
+
+## License
+
+[Unlicense](https://github.com/adiprasetya/zNull-Project/blob/main/LICENSE "Unlicense License")
+
 ---
