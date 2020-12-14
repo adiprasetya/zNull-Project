@@ -25,7 +25,7 @@ function HOMEG()
     if MENUG == nil then
     else
         if MENUG == 1 then
-            bypassG()
+            BYPASS()
         end
         if MENUG == 2 then
             otherG()
@@ -48,6 +48,8 @@ function otherG()
             "➭ Small Crosshair [Lobby] ",
             "➭ Remove Grass [Lobby] ",
             "➭ Remove Fog [Lobby] ",
+            "➭ Ipad View [Lobby] ",
+            "➭ Speed Prone [Lobby] (RiskBan)"
             "☣ Back ☣"
         },
         nil,
@@ -57,79 +59,39 @@ function otherG()
     if OTHERMENUG == nil then
     else
         if OTHERMENUG[1] == true then
-            lessG()
+            LESSRECOIL()
         end
         if OTHERMENUG[2] == true then
-            mbG()
+            MAGICBULLET()
         end
         if OTHERMENUG[3] == true then
-            aimbotG()
+            AIMBOT()
         end
         if OTHERMENUG[4] == true then
-            aimlockG()
+            AIMLOCK()
         end
         if OTHERMENUG[5] == true then
-            smallG()
+            SMALLCROSSHAIR()
         end
         if OTHERMENUG[6] == true then
-            rmgrassG()
+            NOGRASS()
         end
         if OTHERMENUG[7] == true then
-            rmfogG()
+            NOFOG()
         end
         if OTHERMENUG[8] == true then
+            IPADVIEW()
+        end
+        if OTHERMENUG[9] == true then
+            SPEEDPRONE()
+        end
+        if OTHERMENUG[10] == true then
             HOMEG()
         end
     end
 end
 
 -- VALUE
-
-function bypassG()
-    gg.clearResults()
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("135682;144387", gg.TYPE_DWORD)
-    gg.refineNumber("135682", gg.TYPE_DWORD)
-    gg.getResults(50000)
-    gg.editAll("0", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("134658;131586", gg.TYPE_DWORD)
-    gg.refineNumber("134658", gg.TYPE_DWORD)
-    gg.getResults(50000)
-    gg.editAll("0", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("134914;262403", gg.TYPE_DWORD)
-    gg.refineNumber("134914", gg.TYPE_DWORD)
-    gg.getResults(50000)
-    gg.editAll("0", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("133378;262403", gg.TYPE_DWORD)
-    gg.refineNumber("133378", gg.TYPE_DWORD)
-    gg.getResults(50000)
-    gg.editAll("0", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("131330;133634", gg.TYPE_DWORD)
-    gg.refineNumber("131330", gg.TYPE_DWORD)
-    gg.getResults(50000)
-    gg.editAll("0", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("131842;132098", gg.TYPE_DWORD)
-    gg.refineNumber("131842", gg.TYPE_DWORD)
-    gg.getResults(50000)
-    gg.editAll("0", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("132098", gg.TYPE_DWORD)
-    gg.getResults(50000)
-    gg.editAll("0", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.toast("Memory Freeze ✔")
-end
 
 function bcwhG()
     gg.clearResults()
@@ -158,13 +120,13 @@ function bcwhG()
     gg.toast("WallHack ✔")
 end
 
-function mbL()
+function MB()
     gg.clearResults()
     gg.setRanges(gg.REGION_ANONYMOUS)
     gg.searchNumber("h B8 41 00 00 C8 41 00 00 F4 41", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1)
     gg.getResults(gg.getResultsCount())
     if gg.getResultsCount() == 0 then
-        gg.toast("Value Magic Bullet\n[X] Not Found!")
+        gg.toast("Value Magic Bullet\n[X] Not Succes, Found!")
     else
         gg.toast("Magic Bullet ✔")
         gg.editAll("h B8 41 00 00 2F 44 00 00 2F 44", gg.TYPE_BYTE)
@@ -172,10 +134,10 @@ function mbL()
     end
 end
 
-function FAKECEZ()
+function ZNULL()
 end
 function setvalue(address, flags, value)
-    FAKECEZ("Modify address value(Address, value type, value to be modified)")
+    ZNULL("Modify address value(Address, value type, value to be modified)")
     local tt = {}
     tt[1] = {}
     tt[1].address = address
@@ -184,76 +146,204 @@ function setvalue(address, flags, value)
     gg.setValues(tt)
 end
 
-function lessG()
+function LESSRECOIL()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x130CBF0
     setvalue(so + py, 16, 0)
-    gg.toast("Less Recoil ✔")
+    gg.toast("Less Recoil ✓")
 end
-function smallG()
+function SMALLCROSSHAIR()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x130D1A8
     setvalue(so + py, 16, 0)
-    gg.toast("Small Croshair ✔")
+    gg.toast("Small Croshair ✓")
 end
-function aimbotG()
+function AIMBOT()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0xFB4694
     setvalue(so + py, 16, 0)
-    gg.toast("AimBot ✔")
+    gg.toast("AimBot ✓")
 end
-function aimlockG()
+function AIMLOCK()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x24A74B0
     setvalue(so + py, 16, 0)
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x24A74BC
     setvalue(so + py, 16, 0)
-    gg.toast("AimLock ✔")
+    gg.toast("AimLock ✓")
 end
-function mbG()
+function MAGICBULLET()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x3B65608
     setvalue(so + py, 16, 40)
-    gg.toast("Magic Bullet ✔")
+    gg.toast("Magic Bullet ✓")
 end
 
-function rmgrassG()
+function NOGRASS()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x2475D58
     setvalue(so + py, 16, 0)
-    gg.toast("Remove Grass ✔")
+    gg.toast("Remove Grass ✓")
 end
-function rmfogG()
+function NOFOG()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x2C344C8
     setvalue(so + py, 16, 0)
-    gg.toast("Remove Fog ✔")
+    gg.toast("Remove Fog ✓")
 end
 
+function IPADVIEW()
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x37307E0
+    setvalue(so + py, 16, 320)
+    gg.toast("Ipad View ✓")
+end
+
+function SPEEDPRONE()
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 18153752
+    setvalue(so + py, 16, -2.73959308e28)
+    gg.toast("Speed Prone ✓")
+end
+
+function BYPASS()
+
+    gg.clearResults()
+
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.searchNumber("135682;144387", gg.TYPE_DWORD)
+    gg.refineNumber("135682", gg.TYPE_DWORD)
+    gg.getResults(gg.getResultsCount())
+    if gg.getResultsCount() == 0 then
+        print("Bypass 1 Failed!")
+        gg.toast("Bypass 1 Failed!")
+    else
+        print("Bypass 1 Succes, Found: " .. gg.getResultsCount())
+        gg.toast("Bypass 1 Succes.")
+        gg.editAll("0", gg.TYPE_DWORD)
+    end
+
+    gg.clearResults()
+
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.searchNumber("134658;131586", gg.TYPE_DWORD)
+    gg.refineNumber("134658", gg.TYPE_DWORD)
+    if gg.getResultsCount() == 0 then
+        print("Bypass 2 Failed!")
+        gg.toast("Bypass 2 Failed!")
+    else
+        print("Bypass 2 Succes, Found: " .. gg.getResultsCount())
+        gg.toast("Bypass 2 Succes.")
+        gg.getResults(gg.getResultsCount())
+        gg.editAll("0", gg.TYPE_DWORD)
+    end
+
+    gg.clearResults()
+
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.searchNumber("134914;262403", gg.TYPE_DWORD)
+    gg.refineNumber("134914", gg.TYPE_DWORD)
+    if gg.getResultsCount() == 0 then
+        print("Bypass 3 Failed!")
+        gg.toast("Bypass 3 Failed!")
+    else
+        print("Bypass 3 Succes, Found: " .. gg.getResultsCount())
+        gg.toast("Bypass 3 Succes.")
+        gg.getResults(gg.getResultsCount())
+        gg.editAll("0", gg.TYPE_DWORD)
+    end
+
+    gg.clearResults()
+
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.searchNumber("133378;262403", gg.TYPE_DWORD)
+    gg.refineNumber("133378", gg.TYPE_DWORD)
+    if gg.getResultsCount() == 0 then
+        print("Bypass 4 Failed!")
+        gg.toast("Bypass 4 Failed!")
+    else
+        print("Bypass 4 Succes, Found: " .. gg.getResultsCount())
+        gg.toast("Bypass 4 Succes.")
+        gg.getResults(gg.getResultsCount())
+        gg.editAll("0", gg.TYPE_DWORD)
+    end
+
+    gg.clearResults()
+
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.searchNumber("131330;133634", gg.TYPE_DWORD)
+    gg.refineNumber("131330", gg.TYPE_DWORD)
+    if gg.getResultsCount() == 0 then
+        print("Bypass 5 Failed!")
+        gg.toast("Bypass 5 Failed!")
+    else
+        print("Bypass 5 Succes, Found: " .. gg.getResultsCount())
+        gg.toast("Bypass 5 Succes.")
+        gg.getResults(gg.getResultsCount())
+        gg.editAll("0", gg.TYPE_DWORD)
+    end
+
+    gg.clearResults()
+
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.searchNumber("131842;132098", gg.TYPE_DWORD)
+    gg.refineNumber("131842", gg.TYPE_DWORD)
+    if gg.getResultsCount() == 0 then
+        print("Bypass 6 Failed!")
+        gg.toast("Bypass 6 Failed!")
+    else
+        print("Bypass 6 Succes, Found: " .. gg.getResultsCount())
+        gg.toast("Bypass 6 Succes.")
+        gg.getResults(gg.getResultsCount())
+        gg.editAll("0", gg.TYPE_DWORD)
+    end
+
+    gg.clearResults()
+
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.searchNumber("132098", gg.TYPE_DWORD)
+    if gg.getResultsCount() == 0 then
+        print("Bypass 7 Failed!")
+        gg.toast("Bypass 7 Failed!")
+    else
+        print("Bypass 7 Succes, Found: " .. gg.getResultsCount())
+        gg.toast("Memory Freeze ✓")
+        gg.getResults(gg.getResultsCount())
+        gg.editAll("0", gg.TYPE_DWORD)
+    end
+
+    gg.clearResults()
+    
+end
+
+gg.setVisible(false)
+
+
+
 function exit()
-    print("ㅤ\n🇲🇨zNull🇲🇨 ")
+    print("ㅤ\nEND\n")
     os.exit()
 end
 
 function LobbyAlertG()
     LAG = gg.alert("\n☣ ＬＯＢＢＹ ☣", "☣ YES ☣", "☣ NO ☣")
     if LAG == 1 then
-        bypassG()
-        mbG()
-        lessG()
-        rmfogG()
-        smallG()
-        aimbotG()
-        aimlockG()
+        BYPASS()
+        MAGICBULLET()
+        LESSRECOIL()
+        NOFOG()
+        SMALLCROSSHAIR()
     end
 end
 
 -- VALUE
 
 gg.toast("PUBG MOBILE GLOBAL!")
+print("ㅤ\n🇲🇨zNull🇲🇨 ")
+print("Target: " .. gg.getTargetPackage())
+print("")
 gg.clearResults()
-LobbyAlertG()
 
 while true do
     if gg.isVisible(true) then
