@@ -318,7 +318,7 @@ function closing() {
 clear
 echo -e "zNull Project\n\n"
 		echo -e "PUBG MOBILE LITE 32bit!."
-	elif  [[ $PKG == com.tencent.ig ]]; then
+	if  [[ $PKG == com.tencent.ig ]]; then
 		echo -e "PUBG MOBILE GLOBAL 32bit!."
 	elif  [[ $PKG == com.pubg.krmobile ]]; then
 		echo -e "PUBG MOBILE KOREA 32bit!."
@@ -328,7 +328,6 @@ echo -e "zNull Project\n\n"
 		echo "WHAT IS ${PKG}, its package name PUBG?\nChange! on Internal/Android/znull.conf or you can use command: znull [-s|set]"
 		exit 1
 	fi
-fi
 echo -e "Game is already started...\n\n"
 
 while true
