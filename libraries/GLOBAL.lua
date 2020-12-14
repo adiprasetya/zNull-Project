@@ -49,7 +49,7 @@ function otherG()
             "➭ Remove Grass [Lobby] ",
             "➭ Remove Fog [Lobby] ",
             "➭ Ipad View [Lobby] ",
-            "➭ Speed Prone [Lobby] (RiskBan)"
+            "➭ Speed Prone [Lobby] (RiskBan)",
             "☣ Back ☣"
         },
         nil,
