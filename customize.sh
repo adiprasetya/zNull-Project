@@ -5,6 +5,7 @@ mkdir -p $MODPATH/system/bin
 mkdir -p $MODPATH/libraries/LibMod
 mv -f $MODPATH/libraries/znull.sh $MODPATH/system/bin/znull
 mv -f $MODPATH/libraries/adaway.sh $MODPATH/system/bin/adaway
+mv -f $MODPATH/libraries/adbport.sh $MODPATH/system/bin/adbport
 rm -rf $MODPATH/libraries/*.apk
 
 
