@@ -309,8 +309,9 @@ am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
 function closing() {
 clear
 echo -e "zNull Project\n\n"
+	if  [[ $PKG == com.tencent.iglite ]]; then
 		echo -e "PUBG MOBILE LITE 32bit!."
-	if  [[ $PKG == com.tencent.ig ]]; then
+	elif  [[ $PKG == com.tencent.ig ]]; then
 		echo -e "PUBG MOBILE GLOBAL 32bit!."
 	elif  [[ $PKG == com.pubg.krmobile ]]; then
 		echo -e "PUBG MOBILE KOREA 32bit!."
