@@ -12,6 +12,7 @@ rm -rf $MODPATH/libraries/*.apk
 # set permission magisk module
 set_perm $MODPATH/system/bin/znull 0 0 0755 
 set_perm $MODPATH/system/bin/adaway 0 0 0755
+set_perm $MODPATH/system/bin/adbport 0 0 0755
 
 echo -e "\nzNull Project desu...\n"
 
