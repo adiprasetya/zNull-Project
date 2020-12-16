@@ -150,6 +150,9 @@ function LESSRECOIL()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x130CBF0
     setvalue(so + py, 16, 0)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1BB7C74
+    setvalue(so + py, 16, 0)
     gg.toast("Less Recoil ✓")
 end
 function SMALLCROSSHAIR()
