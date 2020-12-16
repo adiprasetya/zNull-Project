@@ -26,7 +26,7 @@ case "$1" in
 		;;
 
 	*)
-		echo "Usage: adb [enable|disable]"
+		echo "Usage: adbport [enable|disable]"
 		exit 1
 		;;
 
