@@ -108,35 +108,27 @@ if [[ "$1" == "-r" || "$1" == "reset" ]]; then
 	znull="/data/data/$PKG/shared_prefs/device_id.xml"
 	if [[ $PKG == com.tencent.iglite ]]; then
 		am force-stop $PKG
-		rm -rf $znull
-		resetGuest
+		resetGuest && { echo -e "Guest PUBG MOBILE LITE Resetted.\n"
 		rm -rf /data/data/$PKG/databases
-		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt
-		echo -e "Guest PUBG MOBILE LITE Resetted.\n"
+		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt }
 		exit
 	elif  [[ $PKG == com.tencent.ig ]]; then
 		am force-stop $PKG
-		rm -rf $znull
-		resetGuest
+		resetGuest && { echo -e "Guest PUBG MOBILE GLOBAL Resetted.\n"
 		rm -rf /data/data/$PKG/databases
-		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt
-		echo -e "Guest PUBG MOBILE GLOBAL Resetted.\n"
+		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt }
 		exit
 	elif  [[ $PKG == com.pubg.krmobile ]]; then
 		am force-stop $PKG
-		rm -rf $znull
-		resetGuest
+		resetGuest && { echo -e "Guest PUBG MOBILE KOREA Resetted.\n"
 		rm -rf /data/data/$PKG/databases
-		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt
-		echo -e "Guest PUBG MOBILE KOREA Resetted.\n"
+		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt }
 		exit
 	elif  [[ $PKG == com.vng.pubgmobile ]]; then
 		am force-stop $PKG
-		rm -rf $znull
-		resetGuest
+		resetGuest && { echo -e "Guest PUBG MOBILE VIETNAM Resetted.\n"
 		rm -rf /data/data/$PKG/databases
-		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt
-		echo -e "Guest PUBG MOBILE VIETNAM Resetted.\n"
+		rm -rf /data/media/0/Android/data/$PKG/files/login-identifier.txt }
 		exit
 	else
 		echo "WHAT IS ${PKG}, its package name PUBG?\nChange! on Internal/Android/znull.conf or you can use command: znull [-s|set]"

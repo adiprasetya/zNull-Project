@@ -14,17 +14,10 @@ set_perm $MODPATH/system/bin/adaway 0 0 0755
 
 echo -e "\nzNull Project desu...\n"
 
-if [[ -f /data/media/0/Android/znull.conf ]]; then
-	rm $MODPATH/libraries/znull.conf
-else
-	mv -f $MODPATH/libraries/znull.conf /data/media/0/Android/. && echo -e "You can change package name on Internal/Android/znull.conf\nor use znull [-s|set].\n"
-fi
+mv -f $MODPATH/libraries/znull.conf /data/media/0/Android/. && echo -e "You can change package name on Internal/Android/znull.conf\nor use znull [-s|set].\n"
 
-if [[ -f /data/media/0/znull-SCRIPT.lua ]]; then
-    rm -rf $MODPATH/libraries/*.lua
-else
-    mv -f $MODPATH/libraries/zNull-SCRIPT.lua /data/media/0/. && echo -e "You can use our script on Internal.\nOur script is OnLy for PUBG MOBILE LITE and GLOBAL!"
-fi
+mv -f $MODPATH/libraries/zNull-SCRIPT.lua /data/media/0/. && echo -e "You can use our script on Internal.\nOur script is OnLy for PUBG MOBILE LITE and GLOBAL!"
+
 
 rm -rf $MODPATH/libraries/*.lua
 
