@@ -16,6 +16,8 @@ function HOMEG()
         gg.choice(
         {
             -- "➤ Memory Freeze【 Lobby 】",
+            "➤ Bypass【 Login 】",
+            "➤ Anti Report【 Lobby / Island】",
             "➤ Other Cheats...",
             "☣ ＥＸＩＴ ☣"
         },
@@ -28,9 +30,15 @@ function HOMEG()
         --    BYPASS()
         --end
         if MENUG == 1 then
-            otherG()
+            BYPASS()
         end
         if MENUG == 2 then
+            ANTIREPORT()
+        end
+        if MENUG == 3 then
+            otherG()
+        end
+        if MENUG == 4 then
             exit()
         end
     end
@@ -42,14 +50,15 @@ function otherG()
         gg.multiChoice(
         {
             "➭ Less Recoil [Lobby]",
-            "➭ Magic Bullet [Lobby]",
+            "➭ Magic Bullet [Game]",
             "➭ Aimbot [Lobby]",
             "➭ Aimlock [Lobby] ",
             "➭ Small Crosshair [Lobby] ",
             "➭ Remove Grass [Lobby] ",
             "➭ Remove Fog [Lobby] ",
             "➭ Ipad View [Lobby] ",
-            "➭ Speed Prone [Lobby] (RiskBan)",
+            "➭ Speed Prone [Game] (RiskBan)",
+            "➭ Flash Speed [Game] (RiskBan)",
             "☣ Back ☣"
         },
         nil,
@@ -86,6 +95,9 @@ function otherG()
             SPEEDPRONE()
         end
         if OTHERMENUG[10] == true then
+            FLASH()
+        end
+        if OTHERMENUG[11] == true then
             HOMEG()
         end
     end
@@ -120,13 +132,31 @@ function bcwhG()
     gg.toast("WallHack ✔")
 end
 
+
+function ANTIREPORT()
+    so=gg.getRangesList('libUE4.so')[1].start
+    py=0x1D40C98
+    setvalue(so+py,16,0)
+    so=gg.getRangesList('libUE4.so')[1].start
+    py=0x1C57DEC
+    setvalue(so+py,16,0)
+    so=gg.getRangesList('libUE4.so')[1].start
+    py=0x1DBA718
+    setvalue(so+py,16,0)
+    so=gg.getRangesList('libUE4.so')[1].start
+    py=0x4C4325
+    setvalue(so+py,16,0)
+    gg.toast("Anti Report ✔")
+end
+
+
 function MB()
     gg.clearResults()
     gg.setRanges(gg.REGION_ANONYMOUS)
     gg.searchNumber("h B8 41 00 00 C8 41 00 00 F4 41", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1)
     gg.getResults(gg.getResultsCount())
     if gg.getResultsCount() == 0 then
-        gg.toast("Value Magic Bullet\n[X] Not Succes, Found!")
+        gg.toast("Magic Bullet Failed!")
     else
         gg.toast("Magic Bullet ✔")
         gg.editAll("h B8 41 00 00 2F 44 00 00 2F 44", gg.TYPE_BYTE)
@@ -150,14 +180,17 @@ function LESSRECOIL()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x130CBF0
     setvalue(so + py, 16, 0)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1BB7C74
-    setvalue(so + py, 16, 0)
+    so=gg.getRangesList('libUE4.so')[1].start
+    py=0x1BB7C74
+    setvalue(so+py,4,70)
+    so=gg.getRangesList('libUE4.so')[1].start
+    py=0x367EC84
+    setvalue(so+py,4,70)
     gg.toast("Less Recoil ✓")
 end
 function SMALLCROSSHAIR()
     so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x130D1A8
+    py = 0x1B62FE0
     setvalue(so + py, 16, 0)
     gg.toast("Small Croshair ✓")
 end
@@ -177,10 +210,18 @@ function AIMLOCK()
     gg.toast("AimLock ✓")
 end
 function MAGICBULLET()
+    MagicBulletAlert = gg.alert("\n☣ MAGIC BULLET 100%!!! ☣\nNote from FakeCez, don't use a pan/melee weapon. if you won't get bug.\nAre you sure about this?", "☣ SURE! ☣", "☣ CANCEL ☣")
+    if MagicBulletAlert == 1 then
     so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x3B65608
-    setvalue(so + py, 16, 40)
+    py = 0x3B64788
+    setvalue(so + py, 16, 42)
     gg.toast("Magic Bullet ✓")
+    end
+    if MagicBulletAlert == 2 then
+        gg.toast("Magic Bullet Canceled...")
+        otherG()
+    end
+
 end
 
 function NOGRASS()
@@ -210,48 +251,45 @@ function SPEEDPRONE()
     gg.toast("Speed Prone ✓")
 end
 
+function FLASH()
+    FlashAlert = gg.alert("\n☣ FLASH SPEED!!! ☣\nThis can't be deactivated, if you want deactivated just relogin (LOL).\nAre you sure about this?", "☣ SURE! ☣", "☣ CANCEL ☣")
+    if FlashAlert == 1 then
+        so=gg.getRangesList('libUE4.so')[1].start
+        py=0x3789A54
+        setvalue(so+py,4,0)
+        so=gg.getRangesList('libUE4.so')[1].start
+        py=0x12C6A30
+        setvalue(so+py,4,0)
+        gg.toast("Flash Speed ✓")
+    end
+    if FlashAlert == 2 then
+        gg.toast("Flash Speed Canceled...")
+        otherG()
+    end
+end
+
+
 function BYPASS()
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1D40C98
-    setvalue(so + py, 16, 0.0)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1C57DEC
-    setvalue(so + py, 16, 0.0)
+  gg.clearResults()
+  gg.setRanges(gg.REGION_BAD)
+  gg.clearResults()
+  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+  gg.clearResults()
+  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+  gg.clearResults()
+  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+  gg.clearResults()
+  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+  gg.clearResults()
+  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+  gg.clearResults()
 
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1DBA718
-    setvalue(so + py, 16, 0.1)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1d40c84
-    setvalue(so + py, 16, 0.7)
-
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1d1ddd4
-    setvalue(so + py, 16, 0.1)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1c55c10
-    setvalue(so + py, 16, 0.1)
-
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1dba704
-    setvalue(so + py, 16, 0.3)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1d40d48
-    setvalue(so + py, 16, 0)
-
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1d40cac
-    setvalue(so + py, 16, 0.1)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1d1dff0
-    setvalue(so + py, 16, 0.1)
-
-    gg.toast("Memory Freeze ✓") 
+    gg.toast("Bypass ✓") 
 end
 
 gg.setVisible(false)
 
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_BAD)
+gg.setRanges(gg.REGION_ANONYMOUS|gg.REGION_BAD)
 
 function exit()
     print("END\n")
