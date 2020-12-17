@@ -99,7 +99,7 @@ fi
 
 
 resetGuest() {
-    sed -E "s/(^\s*.*uuid.*>)(.*)(<.*)/\1$RANDOM$RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM$RANDOM$RANDOM\3/" /data/data/$PKG/shared_prefs/device_id.xml
+    sed -E -i "s/(^\s*.*uuid.*>)(.*)(<.*)/\1$RANDOM$RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM$RANDOM$RANDOM\3/" /data/data/$PKG/shared_prefs/device_id.xml
 }
 
 
