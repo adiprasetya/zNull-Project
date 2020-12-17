@@ -1,6 +1,6 @@
 id=znull
 name=zNull Module
-version=v0.4.4
-versionCode=1
+version=v0.4.5
+versionCode=045
 author=Adi Prasetya 彡
 description=Tools for bypassing Anti Cheat from Tencent dev. Usage: su -c znull
