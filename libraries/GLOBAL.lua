@@ -211,118 +211,47 @@ function SPEEDPRONE()
 end
 
 function BYPASS()
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1D40C98
+    setvalue(so + py, 16, 0.0)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1C57DEC
+    setvalue(so + py, 16, 0.0)
 
-    gg.clearResults()
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1DBA718
+    setvalue(so + py, 16, 0.1)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1d40c84
+    setvalue(so + py, 16, 0.7)
 
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("135682;144387", gg.TYPE_DWORD)
-    gg.refineNumber("135682", gg.TYPE_DWORD)
-    gg.getResults(gg.getResultsCount())
-    if gg.getResultsCount() == 0 then
-        print("Bypass 1 Failed!")
-        gg.toast("Bypass 1 Failed!")
-    else
-        print("Bypass 1 Succes, Found: " .. gg.getResultsCount())
-        gg.toast("Bypass 1 Succes.")
-        gg.editAll("0", gg.TYPE_DWORD)
-    end
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1d1ddd4
+    setvalue(so + py, 16, 0.1)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1c55c10
+    setvalue(so + py, 16, 0.1)
 
-    gg.clearResults()
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1dba704
+    setvalue(so + py, 16, 0.3)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1d40d48
+    setvalue(so + py, 16, 0)
 
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("134658;131586", gg.TYPE_DWORD)
-    gg.refineNumber("134658", gg.TYPE_DWORD)
-    if gg.getResultsCount() == 0 then
-        print("Bypass 2 Failed!")
-        gg.toast("Bypass 2 Failed!")
-    else
-        print("Bypass 2 Succes, Found: " .. gg.getResultsCount())
-        gg.toast("Bypass 2 Succes.")
-        gg.getResults(gg.getResultsCount())
-        gg.editAll("0", gg.TYPE_DWORD)
-    end
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1d40cac
+    setvalue(so + py, 16, 0.1)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1d1dff0
+    setvalue(so + py, 16, 0.1)
 
-    gg.clearResults()
-
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("134914;262403", gg.TYPE_DWORD)
-    gg.refineNumber("134914", gg.TYPE_DWORD)
-    if gg.getResultsCount() == 0 then
-        print("Bypass 3 Failed!")
-        gg.toast("Bypass 3 Failed!")
-    else
-        print("Bypass 3 Succes, Found: " .. gg.getResultsCount())
-        gg.toast("Bypass 3 Succes.")
-        gg.getResults(gg.getResultsCount())
-        gg.editAll("0", gg.TYPE_DWORD)
-    end
-
-    gg.clearResults()
-
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("133378;262403", gg.TYPE_DWORD)
-    gg.refineNumber("133378", gg.TYPE_DWORD)
-    if gg.getResultsCount() == 0 then
-        print("Bypass 4 Failed!")
-        gg.toast("Bypass 4 Failed!")
-    else
-        print("Bypass 4 Succes, Found: " .. gg.getResultsCount())
-        gg.toast("Bypass 4 Succes.")
-        gg.getResults(gg.getResultsCount())
-        gg.editAll("0", gg.TYPE_DWORD)
-    end
-
-    gg.clearResults()
-
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("131330;133634", gg.TYPE_DWORD)
-    gg.refineNumber("131330", gg.TYPE_DWORD)
-    if gg.getResultsCount() == 0 then
-        print("Bypass 5 Failed!")
-        gg.toast("Bypass 5 Failed!")
-    else
-        print("Bypass 5 Succes, Found: " .. gg.getResultsCount())
-        gg.toast("Bypass 5 Succes.")
-        gg.getResults(gg.getResultsCount())
-        gg.editAll("0", gg.TYPE_DWORD)
-    end
-
-    gg.clearResults()
-
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("131842;132098", gg.TYPE_DWORD)
-    gg.refineNumber("131842", gg.TYPE_DWORD)
-    if gg.getResultsCount() == 0 then
-        print("Bypass 6 Failed!")
-        gg.toast("Bypass 6 Failed!")
-    else
-        print("Bypass 6 Succes, Found: " .. gg.getResultsCount())
-        gg.toast("Bypass 6 Succes.")
-        gg.getResults(gg.getResultsCount())
-        gg.editAll("0", gg.TYPE_DWORD)
-    end
-
-    gg.clearResults()
-
-    gg.setRanges(gg.REGION_C_ALLOC)
-    gg.searchNumber("132098", gg.TYPE_DWORD)
-    if gg.getResultsCount() == 0 then
-        print("Bypass 7 Failed!")
-        gg.toast("Bypass 7 Failed!")
-    else
-        print("Bypass 7 Succes, Found: " .. gg.getResultsCount())
-        gg.toast("Memory Freeze ✓")
-        gg.getResults(gg.getResultsCount())
-        gg.editAll("0", gg.TYPE_DWORD)
-    end
-
-    gg.clearResults()
-    
+    gg.toast("Memory Freeze ✓") 
 end
 
 gg.setVisible(false)
 
-
+gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_BAD)
 
 function exit()
     print("ㅤ\nEND\n")
