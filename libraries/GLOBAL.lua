@@ -15,7 +15,7 @@ function HOMEG()
     MENUG =
         gg.choice(
         {
-            "➤ Memory Freeze【 Lobby 】",
+            -- "➤ Memory Freeze【 Lobby 】",
             "➤ Other Cheats...",
             "☣ ＥＸＩＴ ☣"
         },
@@ -24,13 +24,13 @@ function HOMEG()
     )
     if MENUG == nil then
     else
+        --if MENUG == 1 then
+        --    BYPASS()
+        --end
         if MENUG == 1 then
-            BYPASS()
-        end
-        if MENUG == 2 then
             otherG()
         end
-        if MENUG == 3 then
+        if MENUG == 2 then
             exit()
         end
     end
@@ -254,7 +254,7 @@ gg.setVisible(false)
 gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_BAD)
 
 function exit()
-    print("ㅤ\nEND\n")
+    print("END\n")
     os.exit()
 end
 
