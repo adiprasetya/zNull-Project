@@ -17,7 +17,7 @@ function HOMEG()
         {
             -- "➤ Memory Freeze【 Lobby 】",
             "➤ Bypass【 Login 】",
-            "➤ Anti Report【 Lobby / Island】",
+            "➤ Anti Report【 Island 】",
             "➤ Other Cheats...",
             "☣ ＥＸＩＴ ☣"
         },
@@ -49,14 +49,16 @@ function otherG()
     OTHERMENUG =
         gg.multiChoice(
         {
-            "➭ Less Recoil [Lobby]",
+            "➭ Less Recoil [Game]",
             "➭ Magic Bullet [Game]",
-            "➭ Aimbot [Lobby]",
-            "➭ Aimlock [Lobby] ",
-            "➭ Small Crosshair [Lobby] ",
-            "➭ Remove Grass [Lobby] ",
-            "➭ Remove Fog [Lobby] ",
-            "➭ Ipad View [Lobby] ",
+            "➭ Aimbot [Game]",
+            "➭ Aimlock [Game] ",
+            "➭ Small Crosshair [Game] ",
+            "➭ Remove Grass [Game] ",
+            "➭ Remove Fog [Game] ",
+            "➭ Wide View [Game] ",
+            "➭ Black Body [Game] ",
+            "➭ Black Sky [Game] ",
             "➭ Speed Prone [Game] (RiskBan)",
             "➭ Flash Speed [Game] (RiskBan)",
             "☣ Back ☣"
@@ -89,15 +91,21 @@ function otherG()
             NOFOG()
         end
         if OTHERMENUG[8] == true then
-            IPADVIEW()
+            WIDEVIEW()
         end
         if OTHERMENUG[9] == true then
-            SPEEDPRONE()
+            BLACKBODY()
         end
         if OTHERMENUG[10] == true then
-            FLASH()
+            BLACKSKY()
         end
         if OTHERMENUG[11] == true then
+            SPEEDPRONE()
+        end
+        if OTHERMENUG[12] == true then
+            FLASH()
+        end
+        if OTHERMENUG[13] == true then
             HOMEG()
         end
     end
@@ -190,6 +198,9 @@ function LESSRECOIL()
     so=gg.getRangesList('libUE4.so')[1].start
     py= 0x372D818
     setvalue(so+py,16,0)
+    so=gg.getRangesList('libUE4.so')[1].start
+    py= 0x130CBF0
+    setvalue(so+py,4,0)
     gg.toast("Less Recoil ✓")
 end
 function SMALLCROSSHAIR()
@@ -241,11 +252,25 @@ function NOFOG()
     gg.toast("Remove Fog ✓")
 end
 
-function IPADVIEW()
+function BLACKBODY()
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x2CBD788
+    setvalue(so + py, 16, 14)
+    gg.toast("Black Body ✓")
+end
+
+function BLACKSKY()
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x2E082FC
+    setvalue(so + py, 16, 0)
+    gg.toast("Black Sky ✓")
+end
+
+function WIDEVIEW()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x37307E0
     setvalue(so + py, 16, 320)
-    gg.toast("Ipad View ✓")
+    gg.toast("Wide View ✓")
 end
 
 function SPEEDPRONE()
