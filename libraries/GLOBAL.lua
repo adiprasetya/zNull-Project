@@ -101,6 +101,7 @@ function otherG()
             HOMEG()
         end
     end
+    PUBGMGH = -1
 end
 
 -- VALUE
@@ -181,11 +182,14 @@ function LESSRECOIL()
     py = 0x130CBF0
     setvalue(so + py, 16, 0)
     so=gg.getRangesList('libUE4.so')[1].start
-    py=0x1BB7C74
+    py= 0x1BB7C74
     setvalue(so+py,4,70)
     so=gg.getRangesList('libUE4.so')[1].start
-    py=0x367EC84
+    py= 0x367EC84
     setvalue(so+py,4,70)
+    so=gg.getRangesList('libUE4.so')[1].start
+    py= 0x372D818
+    setvalue(so+py,16,0)
     gg.toast("Less Recoil ✓")
 end
 function SMALLCROSSHAIR()
@@ -245,10 +249,17 @@ function IPADVIEW()
 end
 
 function SPEEDPRONE()
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 18153752
-    setvalue(so + py, 16, -2.73959308e28)
-    gg.toast("Speed Prone ✓")
+    ProneAlert = gg.alert("\n☣ SPEED PRONE!!! ☣\nThis can't be deactivated, if you want deactivated just relogin (LOL).\nAre you sure about this?", "☣ SURE! ☣", "☣ CANCEL ☣")
+    if ProneAlert == 1 then
+        so = gg.getRangesList("libUE4.so")[1].start
+        py = 18153752
+        setvalue(so + py, 16, -2.73959308e28)
+        gg.toast("Speed Prone ✓")
+    end
+    if ProneAlert == 2 then
+        gg.toast("Speed Prone Canceled...")
+        otherG()
+    end
 end
 
 function FLASH()
@@ -284,12 +295,10 @@ function BYPASS()
   gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
   gg.clearResults()
 
-    gg.toast("Bypass ✓") 
+  gg.toast("Bypass ✓") 
 end
 
 gg.setVisible(false)
-
-gg.setRanges(gg.REGION_ANONYMOUS|gg.REGION_BAD)
 
 function exit()
     print("END\n")

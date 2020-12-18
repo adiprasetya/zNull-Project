@@ -368,41 +368,37 @@ am force-stop com.termux
 		opening
 		replacelib
 		closing
+		am force-stop com.termux
 		exit
 	elif  [[ $PKG == com.tencent.ig ]]; then
 		echo -e "PUBG MOBILE GLOBAL Detected.\n"
 		checklibMod
-		fixfc
 		disablingapps
 		freedingmemory
 		checkGG
-		opening
-		replacelib
-		closing
+		echo "Try To Open Game, Please Wait..."
+		am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
+		am force-stop com.termux
 		exit
 	elif  [[ $PKG == com.pubg.krmobile ]]; then
 		am force-stop $PKG
 		echo -e "PUBG MOBILE KOREA Detected.\n"
-		checklibMod
-		fixfc
 		disablingapps
 		freedingmemory
 		checkGG
-		opening
-		replacelib
-		closing
+		echo "Try To Open Game, Please Wait..."
+		am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
+		am force-stop com.termux
 		exit
 	elif  [[ $PKG == com.vng.pubgmobile ]]; then
 		am force-stop $PKG
 		echo -e "PUBG MOBILE VIETNAM Detected.\n"
-		checklibMod
-		fixfc
 		disablingapps
 		freedingmemory
 		checkGG
-		opening
-		replacelib
-		closing
+		echo "Try To Open Game, Please Wait..."
+		am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
+		am force-stop com.termux
 		exit
 	else
 		echo "WHAT IS ${PKG}, its package name PUBG?\nChange! on Internal/Android/znull.conf or you can use command: znull [-s|set]"
