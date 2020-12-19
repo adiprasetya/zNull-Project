@@ -58,7 +58,7 @@ function otherG()
             "➭ Remove Fog [Game] ",
             "➭ Wide View [Game] ",
             "➭ Black Body [Game] ",
-            "➭ Black Sky [Game] ",
+            "➭ Night Mode [Game] ",
             "➭ Speed Prone [Game] (RiskBan)",
             "➭ Flash Speed [Game] (RiskBan)",
             "☣ Back ☣"
@@ -263,7 +263,7 @@ function BLACKSKY()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x2E082FC
     setvalue(so + py, 16, 0)
-    gg.toast("Black Sky ✓")
+    gg.toast("Night Mode ✓")
 end
 
 function WIDEVIEW()
