@@ -15,8 +15,7 @@ function HOMEG()
     MENUG =
         gg.choice(
         {
-            -- "➤ Memory Freeze【 Lobby 】",
-            "➤ Bypass【 Login 】",
+            "➤ Bypass || Memory Freeze【 Lobby 】",
             "➤ Anti Report【 Island 】",
             "➤ Other Cheats...",
             "☣ ＥＸＩＴ ☣"
@@ -61,6 +60,7 @@ function otherG()
             "➭ Night Mode [Game] ",
             "➭ Speed Prone [Game] (RiskBan)",
             "➭ Flash Speed [Game] (RiskBan)",
+            "➭ Auto Headshoot [Game] (RiskBan)",
             "☣ Back ☣"
         },
         nil,
@@ -106,6 +106,9 @@ function otherG()
             FLASH()
         end
         if OTHERMENUG[13] == true then
+            AUTOHEADSHOOT()
+        end
+        if OTHERMENUG[14] == true then
             HOMEG()
         end
     end
@@ -173,6 +176,28 @@ function MB()
     end
 end
 
+function AUTOHEADSHOOT()
+        HeadAlert = gg.alert("\n☣ AUTO HEADSHOOT 100%!!! ☣\nNeed Bypass || Memory Freeze, because the value is Memory Hack!\nAre you sure about this?", "☣ SURE! ☣", "☣ CANCEL ☣", "BYPASS ?")
+    if HeadAlert == 1 then
+gg.clearResults()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("9.20161819458;23;25;30.5", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+gg.searchNumber("25;30.5", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+ab1 = gg.getResults(10)
+gg.editAll("255", gg.TYPE_FLOAT)
+gg.clearResults()
+        gg.toast("Auto Headshoot ✓")
+    end
+    if HeadAlert == 2 then
+        gg.toast("Auto Headshoot Cancelled...")
+        otherG()
+    end
+        if HeadAlert == 3 then
+        BYPASS()
+        AUTOHEADSHOOT()
+    end
+end
+
 function ZNULL()
 end
 function setvalue(address, flags, value)
@@ -186,13 +211,15 @@ function setvalue(address, flags, value)
 end
 
 function LESSRECOIL()
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x130CBF0
-    setvalue(so + py, 16, 0)
-    so=gg.getRangesList('libUE4.so')[1].start
-    py= 0x1BB7C74
-    setvalue(so+py,4,70)
-    so=gg.getRangesList('libUE4.so')[1].start
+so=gg.getRangesList('libUE4.so')[1].start
+py=0x130CBF0
+setvalue(so+py,4,0)
+so=gg.getRangesList('libUE4.so')[1].start
+py=0x1BB7C74
+setvalue(so+py,16,70)
+so=gg.getRangesList('libUE4.so')[1].start
+py=0x367EC84
+setvalue(so+py,16,70)
     gg.toast("Less Recoil ✓")
 end
 function SMALLCROSSHAIR()
@@ -222,10 +249,13 @@ function MAGICBULLET()
     so = gg.getRangesList("libUE4.so")[1].start
     py = 0x3B64788
     setvalue(so + py, 16, 42)
+        so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x62277512
+    setvalue(so + py, 16, 42)
     gg.toast("Magic Bullet ✓")
     end
     if MagicBulletAlert == 2 then
-        gg.toast("Magic Bullet Canceled...")
+        gg.toast("Magic Bullet Cancelled...")
         otherG()
     end
 
@@ -266,7 +296,7 @@ function WIDEVIEW()
 end
 
 function SPEEDPRONE()
-    ProneAlert = gg.alert("\n☣ SPEED PRONE!!! ☣\nThis can't be deactivated, if you want deactivated just relogin (LOL).\nAre you sure about this?", "☣ SURE! ☣", "☣ CANCEL ☣")
+    ProneAlert = gg.alert("\n☣ SPEED PRONE!!! ☣\nThis can't be deactivated, if you want deactivated just relogin (LOL), and maybe ban 10 minutes.\nAre you sure about this?", "☣ SURE! ☣", "☣ CANCEL ☣")
     if ProneAlert == 1 then
         so = gg.getRangesList("libUE4.so")[1].start
         py = 18153752
@@ -274,13 +304,13 @@ function SPEEDPRONE()
         gg.toast("Speed Prone ✓")
     end
     if ProneAlert == 2 then
-        gg.toast("Speed Prone Canceled...")
+        gg.toast("Speed Prone Cancelled...")
         otherG()
     end
 end
 
 function FLASH()
-    FlashAlert = gg.alert("\n☣ FLASH SPEED!!! ☣\nThis can't be deactivated, if you want deactivated just relogin (LOL).\nAre you sure about this?", "☣ SURE! ☣", "☣ CANCEL ☣")
+    FlashAlert = gg.alert("\n☣ FLASH SPEED!!! ☣\nThis can't be deactivated, if you want deactivated just relogin (LOL), and maybe ban 10 minutes.\nAre you sure about this?", "☣ SURE! ☣", "☣ CANCEL ☣")
     if FlashAlert == 1 then
         so=gg.getRangesList('libUE4.so')[1].start
         py=0x3789A54
@@ -291,28 +321,55 @@ function FLASH()
         gg.toast("Flash Speed ✓")
     end
     if FlashAlert == 2 then
-        gg.toast("Flash Speed Canceled...")
+        gg.toast("Flash Speed Cancelled...")
         otherG()
     end
 end
 
 
 function BYPASS()
-  gg.clearResults()
-  gg.setRanges(gg.REGION_BAD)
-  gg.clearResults()
-  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-  gg.clearResults()
-  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-  gg.clearResults()
-  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-  gg.clearResults()
-  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-  gg.clearResults()
-  gg.searchNumber("2.718519e-43F;3.7615819e-37F;2.0F;0.00999999978F::200", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-  gg.clearResults()
+gg.setRanges(gg.REGION_C_ALLOC)
+gg.searchNumber("196,864;16,842,753::5", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+if gg.getResultCount() == 0 then
+else
+    gg.searchNumber("196,864", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+    n = gg.getResultCount()
+    jz = gg.getResults(n)
+    for i = 1, n do
+        gg.addListItems({[1] = {address = jz[i].address + 236, flags = 4, freeze = true, value = 67109633}})
+        gg.addListItems({[1] = {address = jz[i].address + 232, flags = 4, freeze = true, value = 67109633}})
+        gg.addListItems({[1] = {address = jz[i].address + 228, flags = 4, freeze = true, value = 67109633}})
+        gg.addListItems({[1] = {address = jz[i].address + 340, flags = 4, freeze = true, value = 67109633}})
+        gg.addListItems({[1] = {address = jz[i].address + 344, flags = 4, freeze = true, value = 67109633}})
+    end
+end
+gg.clearResults()
+gg.setRanges(gg.REGION_C_ALLOC)
+gg.searchNumber("133634;134914", gg.TYPE_DWORD)
+gg.refineNumber("133634", gg.TYPE_DWORD)
+gg.getResults(50500)
+gg.editAll("67109633", gg.TYPE_DWORD)
+gg.clearResults()
+gg.setRanges(gg.REGION_C_ALLOC)
+gg.searchNumber("134914;131330", gg.TYPE_DWORD)
+gg.refineNumber("134914", gg.TYPE_DWORD)
+gg.getResults(50500)
+gg.editAll("67109633", gg.TYPE_DWORD)
+gg.clearResults()
+gg.setRanges(gg.REGION_C_ALLOC)
+gg.searchNumber("131586;131842", gg.TYPE_DWORD)
+gg.refineNumber("131586", gg.TYPE_DWORD)
+gg.getResults(50500)
+gg.editAll("67109633", gg.TYPE_DWORD)
+gg.clearResults()
+gg.setRanges(gg.REGION_C_ALLOC)
+gg.searchNumber("132098;133635", gg.TYPE_DWORD)
+gg.refineNumber("132098", gg.TYPE_DWORD)
+gg.getResults(50500)
+gg.editAll("67109633", gg.TYPE_DWORD)
+gg.clearResults()
 
-  gg.toast("Bypass ✓") 
+  gg.toast("Bypass || Memory Freeze ✓") 
 end
 
 gg.setVisible(false)
@@ -333,8 +390,19 @@ function LobbyAlertG()
     end
 end
 
+function GLOBALALERT()
+GA = gg.alert("No cheating is safe, anti-ban is just an illusion. Remember that!", "OKE!", "EXIT")
+if GA == 1 then
+    HOMEG()
+end
+if GA == 2 then
+    exit()
+end
+end
+
 -- VALUE
 
+GLOBALALERT()
 gg.toast("PUBG MOBILE GLOBAL!")
 print("ㅤ\n🇲🇨zNull🇲🇨 ")
 print("Target: " .. gg.getTargetPackage())
