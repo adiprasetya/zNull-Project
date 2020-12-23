@@ -269,7 +269,7 @@ end
 function AUTOHEADSHOOT()
     HeadAlert =
         gg.alert(
-        "\n☣ AUTO HEADSHOOT 100%!!! ☣\nNeed Bypass || Memory Freeze, because the value is Memory Hack!\nAre you sure about this?",
+        "\n☣ AUTO HEADSHOOT 100%!!! ☣\nNeed Bypass || Memory Freeze, because the value is Memory Hack! (maybe not work)\nAre you sure about this?",
         "☣ SURE! ☣",
         "☣ CANCEL ☣",
         "BYPASS ?"
