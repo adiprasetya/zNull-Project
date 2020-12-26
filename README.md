@@ -1,10 +1,18 @@
 # zNull Project
 
+Only Tools for Advanced user.
 
-Cheating PUBG MOBILE only using Magisk Module, i hope you enjoy the module xD.
 
+znull.conf default to PUBG MOBILE GLOBAL.
 
-just simple script for cheating, only replace and Anti Banned :v (maybe), so use guest account for tests before using main id.
+Some Tools for PUBG MOBILE
+- Reset Guest
+- Lib Method (LITE OnLy)
+- Launcher
+
+Extended
+- Adaway Installer
+- ADB TCPIP Open Port 5555
 
 ### LIST SUPPORTED PUBG MOBILE!
 1. PUBG MOBILE LITE
@@ -15,10 +23,12 @@ just simple script for cheating, only replace and Anti Banned :v (maybe), so use
 ## Requirements
 
 
-ROOT ONLY WITH [MAGISK](https://github.com/topjohnwu/Magisk "Magisk Github") ! xD
+ROOT ONLY WITH [MAGISK](https://github.com/topjohnwu/Magisk "Magisk Github") ! LOL xD
 
 
-Installed Module [Busybox Android NDK](https://github.com/Magisk-Modules-Repo/busybox-ndk "Busybox Android NDK Magisk Repo") and [GNU Utils Android.](https://github.com/adiprasetya/zNull-Project/releases/tag/v4.6 "GNU Utils Android Download")
+Installed Module [Busybox Android NDK](https://github.com/Magisk-Modules-Repo/busybox-ndk "Busybox Android NDK Magisk Repo")
+
+From UPDATE zNull Module v0.4.6 No Need GNU Utils again.
 
 
 
