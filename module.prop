@@ -1,6 +1,6 @@
 id=znull
 name=zNull Module
-version=v0.4.5
-versionCode=045
+version=v0.4.6
+versionCode=046
 author=Adi Prasetya 彡
-description=Tools for bypassing Anti Cheat from Tencent dev. Usage: su -c znull
+description=Tools for PUBG MOBILE. Usage: su -c znull
