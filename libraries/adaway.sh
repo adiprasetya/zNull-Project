@@ -36,9 +36,14 @@ else
 	sleep 1
 fi
 
-read -p "Need bypass ban 3rd party? [y/N]: " bypass
-if [[ $bypass == yes || $bypass == Y || $bypass == y || ]]; then
+echo -n "Need bypass ban 3rd party? [y/N]: " && read bypass
+if [[ $bypass == yes || $bypass == Y || $bypass == y || $bypass == ya ]]; then
 	echo "127.0.0.1 down.anticheatexpert.com" >> $dir/$name
 	echo "127.0.0.1 cloud.gsdk.proximabeta.com" >> $dir/$name
 	echo "127.0.0.1 file.igamecj.com" >> $dir/$name
+	echo "Bypass ban 3rd party Done!"
+	exit
+else
+	echo "Bypass ban 3rd party Skipped."
+	exit
 fi
