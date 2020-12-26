@@ -36,19 +36,19 @@ case "$1" in
 
 	*)
 		if [[ "`getprop service.adb.tcp.port`" != 5555 ]]; then
-			echo "Setting properties to disable..."
-			su -c setprop service.adb.tcp.port -1 && echo "Succes to Setting Properties..."
-			echo "Restarting adbd..."
-			stop adbd
-			start adbd
-			echo "Done! adb tcp with port 5555 disabled."
-		else
 			echo "Setting properties to enable..."
 			su -c setprop service.adb.tcp.port 5555 && echo "Succes to Setting Properties..."
 			echo "Restarting adbd..."
 			stop adbd
 			start adbd
 			echo "Done! adb tcp with port 5555 enabled."
+		else
+			echo "Setting properties to disable..."
+			su -c setprop service.adb.tcp.port -1 && echo "Succes to Setting Properties..."
+			echo "Restarting adbd..."
+			stop adbd
+			start adbd
+			echo "Done! adb tcp with port 5555 disabled."
 		fi
 		;;
 
