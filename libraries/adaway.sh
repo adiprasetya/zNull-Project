@@ -36,7 +36,7 @@ else
 	sleep 1
 fi
 
-prompt -p "Need bypass ban 3rd party? [y/N]: " bypass
+read -p "Need bypass ban 3rd party? [y/N]: " bypass
 if [[ $bypass == yes || $bypass == Y || $bypass == y || ]]; then
 	echo "127.0.0.1 down.anticheatexpert.com" >> $dir/$name
 	echo "127.0.0.1 cloud.gsdk.proximabeta.com" >> $dir/$name
