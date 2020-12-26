@@ -7,25 +7,27 @@ fi
 
 clear -x;clear
 
-echo -e "zNull Project\n\n"
+cat /data/adb/modules/znull/libraries/zNull-Project.txt
 
 if [[ -f /data/media/0/Android/znull.conf ]]; then
 	source /data/media/0/Android/znull.conf
 else
-	echo "znull.conf not found! Don't delete the config! reflash zNull Module!"
+	echo "znull.conf not found! Don't delete the config!"
+	echo "Changing to default again..."
+	cp -f /data/adb/modules/znull/libraries/znull.conf /data/media/0/Android/znull.conf && echo "Done!" && source /data/media/0/Android/znull.conf && echo "re-run znull if you need :)" || echo "Failed to copying, re-flash zNull Module!"
 	exit 1
 fi
 
 
-export DD="/data/data"
-export DMAD="/data/media/0/Android/data"
-export FU="files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved"
-export DM0="/data/media/0"
-export LIB="/data/data/${PKG}/lib"
-#export LIB="/data/app/${PKG}-*/lib/arm"
+DD="/data/data"
+DMAD="/data/media/0/Android/data"
+FU="files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved"
+DM0="/data/media/0"
+LIB="/data/data/${PKG}/lib"
+#LIB="/data/app/${PKG}-*/lib/arm"
 SRC="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/SrcVersion.ini"
 PAKS="/data/media/0/Android/data/$PKG/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Paks"
-export librariesDir="/data/adb/modules/znull/libraries"
+librariesDir="/data/adb/modules/znull/libraries"
 
 
 
@@ -299,7 +301,10 @@ fi
 function replacelib() {
 am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 am force-stop com.google.android.inputmethod.latin
-cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. && echo "Succes replacing lib." || 64bit
+
+for 
+
+cp -F /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. && echo "Succes replacing lib." || 64bit
 chmod 755 $LIB/*
 am force-stop com.google.android.inputmethod.latin
 sleep 1
