@@ -3,7 +3,7 @@
 Only Tools for Advanced user.
 
 
-znull.conf default to PUBG MOBILE GLOBAL.
+znull.conf default to PUBG MOBILE LITE.
 
 Some Tools for PUBG MOBILE
 - Reset Guest
@@ -44,9 +44,9 @@ from our [Telegram Channel](https://t.me/zNullProject_Channel "Our Telegram Chan
 
 ```bash
 > su -c znull
-> su -c znull [-s|set] [number]
+> su -c znull [-s|set] <number>
 > su -c znull [-r|reset]
-> su -c znull [gg] [packagenameGG]
+> su -c znull [gg] <packagenameGG>
 > su -c znull [-h|help|--help]
 ```
 
