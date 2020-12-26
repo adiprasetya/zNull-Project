@@ -1,0 +1,19 @@
+#!/system/bin/sh
+
+if [ "$(whoami)" != "root" ];then
+	echo -e 'RUN WITH ROOT PERMISSIONS !!!'
+	exit 1
+fi
+
+if [[ -s /data/media/0/Android/znull.sh ]];then
+	chmod +x /data/media/0/Android/znull.sh
+	source /data/media/0/Android/znull.sh
+else
+	echo "Don't delete znull.sh in /Internal/Android!"
+	echo "Reflash Module!"
+	echo "You can edit it, it open source."
+	echo "But don't delete it!"
+	exit 1
+fi
+
+exit
