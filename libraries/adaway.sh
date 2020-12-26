@@ -11,20 +11,27 @@ dir="/system/etc"
 source="https://adaway.org/hosts.txt"
 
 if [[ $(which curl) == "" ]]; then
-	echo -e "\nERROR, curl command not found.\n"
+	echo -e "curl command not found."
 	echo "Trying using wget :)"
 	if [[ $(which wget) == "" ]]; then
-		echo -e "ERROR, wget command not found too.\n" && exit 1
+		echo -e "wget command not found too." && exit 1
 	else
 		echo -e "\nDownloading and Patching AdBlocker by Adaway..."
 		sleep 1
-		wget -q -O $dir/$name $source  &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet.\n" 
+		wget -q -O $dir/$name $source  &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet." 
 		sleep 1
 	fi
 else 
 # download hosts file using curl
-	echo -e "\nDownloading and Patching AdBlocker by Adaway..."
+	echo -e "Downloading and Patching AdBlocker by Adaway..."
 	sleep 1
-	curl -s -o $dir/$name $source &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet.\n" 
+	curl -s -o $dir/$name $source &> /dev/null && echo "Done, AdBlocker has been Planted.\n" || echo "Failed. maybe no internet." 
 	sleep 1
+fi
+
+prompt -p "Need bypass ban 3rd party? [y/N]: " bypass
+if [[ $bypass == yes || $bypass == Y || $bypass == y || ]]; then
+	echo "127.0.0.1 down.anticheatexpert.com" >> $dir/$name
+	echo "127.0.0.1 cloud.gsdk.proximabeta.com" >> $dir/$name
+	echo "127.0.0.1 file.igamecj.com" >> $dir/$name
 fi
