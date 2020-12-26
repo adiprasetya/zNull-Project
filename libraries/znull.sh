@@ -301,9 +301,6 @@ fi
 function replacelib() {
 am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 am force-stop com.google.android.inputmethod.latin
-
-for 
-
 cp -F /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. && echo "Succes replacing lib." || 64bit
 chmod 755 $LIB/*
 am force-stop com.google.android.inputmethod.latin
