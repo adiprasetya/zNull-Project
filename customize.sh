@@ -19,7 +19,15 @@ cat $MODPATH/libraries/zNull-Project.txt
 
 
 if [[ ! -s /data/media/0/Android/znull.conf ]];then
-	mv -f $MODPATH/libraries/znull.conf /data/media/0/Android/. && echo -e "You can change package name on Internal/Android/znull.conf\nor use znull [-s|set].\n"
+	mv -f $MODPATH/libraries/znull.conf /data/media/0/Android/znull.conf
+	echo -e "You can change package name on Internal/Android/znull.conf\nor use znull [-s|set].\n"
+else
+	source /data/media/0/Android/znull.conf &> /dev/null
+	if [[ $version != 2 ]]; then
+		mv -f $MODPATH/libraries/znull.conf /data/media/0/Android/znull.conf
+		echo -e "Updated to new Template znull.conf"
+		echo -e "You can configure it again!\n"
+	fi
 fi
 
 
