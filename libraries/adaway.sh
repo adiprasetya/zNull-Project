@@ -36,6 +36,7 @@ else
 	sleep 1
 fi
 
+echo "Only if u get banned 3rd on rooted device :)"
 echo -n "Need bypass ban 3rd party? [y/N]: " && read bypass
 if [[ $bypass == yes || $bypass == Y || $bypass == y || $bypass == ya ]]; then
 	echo "127.0.0.1 down.anticheatexpert.com" >> $dir/$name
