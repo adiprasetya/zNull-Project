@@ -492,7 +492,7 @@ function LobbyAlertG()
 end
 
 function GLOBALALERT()
-    GA = gg.alert("\nNo cheating is safe, anti-ban is just an illusion. Remember that!", "OKE!", "EXIT")
+    GA = gg.alert("Last Update: 30 Dec 2020\n\nNo cheating is safe, anti-ban is just an illusion. Remember that!", "OKE!", "EXIT")
     if GA == 1 then
         HOMEG()
     end
