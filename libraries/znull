@@ -10,9 +10,14 @@ if [[ -s /data/media/0/Android/znull.sh ]];then
 	source /data/media/0/Android/znull.sh
 else
 	echo "Don't delete znull.sh in /Internal/Android!"
-	echo "Reflash Module!"
 	echo "You can edit it, it open source."
 	echo "But don't delete it!"
+	echo ""
+	echo "restoring to default.."
+	cp -f /data/adb/modules/znull/libraries/znull.sh /data/media/0/Android/.
+	chmod +x /data/media/0/Android/znull.sh
+	echo "Done."
+	echo "re-run znull if need ;)"
 	exit 1
 fi
 
