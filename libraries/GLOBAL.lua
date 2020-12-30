@@ -60,8 +60,6 @@ function otherG()
             "➭ Night Mode [Game] ",
             "➭ Speed Prone [Game] (RiskBan)",
             "➭ Flash Speed [Game] (RiskBan)",
-            "➭ Auto Headshoot [Game] (RiskBan)",
-            "➭ Aimbot 360° [Game] (RiskBan)",
             "☣ Back ☣"
         },
         nil,
@@ -107,12 +105,6 @@ function otherG()
             FLASH()
         end
         if OTHERMENUG[13] == true then
-            AUTOHEADSHOOT()
-        end
-        if OTHERMENUG[14] == true then
-            AIM360()
-        end
-        if OTHERMENUG[15] == true then
             HOMEG()
         end
     end
@@ -342,7 +334,7 @@ end
 function MAGICBULLET()
     MagicBulletAlert =
         gg.alert(
-        "\n☣ MAGIC BULLET 100%!!! ☣\nNote from FakeCez, don't use a pan/melee weapon. if you won't get bug.\nAre you sure about this?",
+        "\n☣ MAGIC BULLET 100%!!! ☣\nNote from FakeCez, don't use a pan. if you won't get bug blocked by the wall. Bug, u can't damage if enemy is proning.\nAre you sure about this?",
         "☣ SURE! ☣",
         "☣ CANCEL ☣"
     )
