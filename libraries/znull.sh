@@ -14,7 +14,7 @@ if [[ -f /data/media/0/Android/znull.conf ]]; then
 else
 	echo "znull.conf not found! Don't delete the config!"
 	echo "Changing to default again..."
-	cp -f /data/adb/modules/znull/libraries/znull.conf /data/media/0/Android/znull.conf && echo "Done!" && source /data/media/0/Android/znull.conf && echo "re-run znull if you need :)" || echo "Failed to copying, re-flash zNull Module!"
+	cp -f /data/adb/modules/znull/libraries/znull.conf /data/media/0/Android/znull.conf && echo "Done!" && echo "re-run znull if you need :)" || echo "Failed to copying, re-flash zNull Module!"
 	exit 1
 fi
 
