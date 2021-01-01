@@ -17,11 +17,11 @@ function HOMEG()
         {
             "➤ Bypass || Memory Freeze【 Lobby 】",
             "➤ Anti Report【 Island 】",
-            "➤ Other Cheats...",
+            "➤ More Cheats...",
             "☣ ＥＸＩＴ ☣"
         },
         nil,
-        ("PUBG MOBILE GLOBAL!")
+        ("PUBG MOBILE GLOBAL v1.1.0!")
     )
     if MENUG == nil then
     else
@@ -492,7 +492,7 @@ function LobbyAlertG()
 end
 
 function GLOBALALERT()
-    GA = gg.alert("Last Update: 30 Dec 2020\n\nNo cheating is safe, anti-ban is just an illusion. Remember that!", "OKE!", "EXIT")
+    GA = gg.alert("Last Update: 1 Jan 2021\n\nNo cheating is safe, anti-ban is just an illusion. Remember that!", "OKE!", "EXIT")
     if GA == 1 then
         HOMEG()
     end
@@ -503,8 +503,8 @@ end
 
 -- VALUE
 
-GLOBALALERT()
 gg.toast("PUBG MOBILE GLOBAL!")
+GLOBALALERT()
 print("ㅤ\n🇲🇨zNull🇲🇨 ")
 print("Target: " .. gg.getTargetPackage())
 print("")

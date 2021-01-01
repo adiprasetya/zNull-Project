@@ -1,10 +1,9 @@
 if gg.getTargetPackage() == "com.tencent.iglite" then
-	gg.clearResults()
+    gg.clearResults()
 else
     print("ㅤ\n🇲🇨zNull🇲🇨\nYou are not running PUBG MOBILE LITE !!!")
     os.exit()
 end
-
 
 gg.setVisible(false)
 
@@ -16,31 +15,26 @@ function HOMEL()
     MENUL =
         gg.choice(
         {
-            "➤ WALLHACK & COLOR【 Lobby 】",
             "➤ FAST PARACHUTE【 Island 】",
             "➤ Magic Bullet【 EveryMatch 】",
-            "➤ Other Cheats...",
+            "➤ More Cheats...",
             "☣ ＥＸＩＴ ☣"
         },
         nil,
-        ("PUBG MOBILE LITE!")
+        ("PUBG MOBILE LITE v0.20.0!")
     )
     if MENUL == nil then
     else
         if MENUL == 1 then
-            bcwhL()
-            fixL()
-        end
-        if MENUL == 2 then
             fpL()
         end
-        if MENUL == 3 then
+        if MENUL == 2 then
             mbL()
         end
-        if MENUL == 4 then
+        if MENUL == 3 then
             otherL()
         end
-        if MENUL == 5 then
+        if MENUL == 4 then
             exit()
         end
     end
@@ -59,7 +53,7 @@ function otherL()
             "☣ Back ☣"
         },
         nil,
-        ("PUBG MOBILE LITE!")
+        ("PUBG MOBILE LITE v0.20.0!")
     )
 
     if OTHERMENUL == nil then
@@ -121,7 +115,14 @@ end
 function antheadL()
     gg.setVisible(false)
     gg.setRanges(gg.REGION_ANONYMOUS)
-    gg.searchNumber("0.98900693655~0.98900723457;0.14786802232~0.14786840975;1.1920926e-7::9", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+    gg.searchNumber(
+        "0.98900693655~0.98900723457;0.14786802232~0.14786840975;1.1920926e-7::9",
+        gg.TYPE_FLOAT,
+        false,
+        gg.SIGN_EQUAL,
+        0,
+        -1
+    )
     gg.searchNumber("0.98900693655~0.98900723457", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
     gg.getResults(100)
     gg.editAll("16000", gg.TYPE_FLOAT)
@@ -234,6 +235,11 @@ function fpL()
     gg.toast("Fast Parachute ✔")
 end
 
+function exit()
+    print("END\n")
+    os.exit()
+end
+
 function LobbyAlertL()
     gg.setVisible(false)
     LAL = gg.alert("\n☣ ＬＯＢＢＹ ☣", "☣ YES ☣", "☣ NO ☣")
@@ -244,15 +250,33 @@ function LobbyAlertL()
     end
 end
 
-	gg.toast("PUBG MOBILE LITE!")
-LobbyAlertL()
-
-    while true do
-        if gg.isVisible(true) then
-            PUBGMLH = 1
-            gg.setVisible(false)
-        end
-        if PUBGMLH == 1 then
-            HOMEL()
-        end
+function LITEALERT()
+    LA =
+        gg.alert(
+        "Last Update: 1 Jan 2021\n\nNo cheating is safe, anti-ban is just an illusion. Remember that!\n\nMust be with lib method!",
+        "OKE!",
+        "EXIT"
+    )
+    if GA == 1 then
+        HOMEL()
     end
+    if LA == 2 then
+        exit()
+    end
+end
+
+gg.toast("PUBG MOBILE LITE!")
+LITEALERT()
+print("ㅤ\n🇲🇨zNull🇲🇨 ")
+print("Target: " .. gg.getTargetPackage())
+print("")
+gg.clearResults()
+while true do
+    if gg.isVisible(true) then
+        PUBGMLH = 1
+        gg.setVisible(false)
+    end
+    if PUBGMLH == 1 then
+        HOMEL()
+    end
+end
