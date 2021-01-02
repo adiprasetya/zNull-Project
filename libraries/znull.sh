@@ -274,7 +274,7 @@ fi
 
 function opening() {
 echo "Try To Open Game, Please Wait..."
-
+am force-stop com.google.android.inputmethod.latin
 am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
 
 echo "Please wait..."
@@ -282,7 +282,7 @@ sleep 1
 
 if pidof $PKG &> /dev/null
 then
-	sleep 23
+	sleep 20
 else
 	am force-stop $GG
 	echo -e "Game closed immediatly, maybe before script is dead."
@@ -300,8 +300,8 @@ am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
 # am force-stop com.google.android.inputmethod.latin
 cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. && echo "Succes replacing lib." || 64bit
 chmod 755 $LIB/*
-# am force-stop com.google.android.inputmethod.latin
 sleep 1
+am force-stop com.google.android.inputmethod.latin
 am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
 }
 
@@ -341,7 +341,6 @@ echo -e "Game closed, restoring all to normal."
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
 
 	rm -rf $DD/$PKG/app_crashrecord
-	touch $DD/$PKG/app_crashrecord
 
 echo "Done. Succesfully restoring to normal."
 sleep 1
@@ -360,19 +359,15 @@ am force-stop com.termux
 	if [[ $PKG == com.tencent.iglite ]]; then
 		am force-stop $PKG
 		echo -e "PUBG MOBILE LITE Detected.\n"
-		checklibMod
-		fixfc
 		disablingapps
 		freedingmemory
 		checkGG
-		opening
-		replacelib
-		closing
+		echo "Try To Open Game, Please Wait..."
+		am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
 		am force-stop com.termux
 		exit
 	elif  [[ $PKG == com.tencent.ig ]]; then
 		echo -e "PUBG MOBILE GLOBAL Detected.\n"
-		checklibMod
 		disablingapps
 		freedingmemory
 		checkGG
