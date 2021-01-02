@@ -22,7 +22,7 @@ function HOMEG()
     MENUG =
         gg.choice(
         {
-            "➤ Bypass || Memory Freeze【 Lobby 】[Detected!]",
+--            "➤ Bypass || Memory Freeze【 Lobby 】[Detected!]",
             "➤ Anti Report【 Island 】",
             "➤ More Cheats...",
             "☣ ＥＸＩＴ ☣"
@@ -32,19 +32,16 @@ function HOMEG()
     )
     if MENUG == nil then
     else
-        --if MENUG == 1 then
-        --    BYPASS()
-        --end
+--        if MENUG == 1 then
+--            BYPASS()
+--        end
         if MENUG == 1 then
-            BYPASS()
-        end
-        if MENUG == 2 then
             ANTIREPORT()
         end
-        if MENUG == 3 then
+        if MENUG == 2 then
             otherG()
         end
-        if MENUG == 4 then
+        if MENUG == 3 then
             exit()
         end
     end
