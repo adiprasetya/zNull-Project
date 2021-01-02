@@ -10,7 +10,7 @@ name="hosts"
 dir="/system/etc"
 source="https://adaway.org/hosts.txt"
 
-if [[ ! -f /data/adb/modules/hosts/auto_mount ]]; then
+if [[ ! -f /data/adb/modules/hosts/module.prop ]]; then
 	echo "Must Installed Systemlessly Hosts Module by Magisk!"
 	echo "Enable it on Magisk Manager Settings > Systemless Hosts!"
 	echo "then reboot your device, then re-run adaway"
