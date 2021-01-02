@@ -196,15 +196,17 @@ function 64bit() {
 	exit
 }
 
-am force-stop com.google.android.inputmethod.latin
+# am force-stop com.google.android.inputmethod.latin
 #rm -rf $DMAD/$PKG/files/login-identifier.txt
 #rm -rf $DD/$PKG/databases
 
 rm -rf /data/media/0/Android/data/$PKG/cache 2> /dev/null
 
 function fixfc() {
-rm -rf $DD/$PKG/files 
-touch $DD/$PKG/files
+	chmod -Rf 000 /data/data/$PKG/files/tss_tmp/* &>/dev/null
+	chmod -Rf 000 /data/data/$PKG/files/tss_tmp &>/dev/null
+	rm -rf $DD/$PKG/app_crashrecord
+	touch $DD/$PKG/app_crashrecord
 }
 
 listingLibMod=$(ls /data/adb/modules/znull/libraries/LibMod 2> /dev/null | wc -l)
@@ -280,18 +282,13 @@ sleep 1
 
 if pidof $PKG &> /dev/null
 then
-	sleep 27
+	sleep 23
 else
 	am force-stop $GG
 	echo -e "Game closed immediatly, maybe before script is dead."
 	echo "Fixing..."
 	su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
-	rm -rf $DD/$PKG/files 
 	rm -rf $DD/$PKG/app_crashrecord
-	rm -rf $DD/$PKG/app_bugly
-	rm -rf $DD/$PKG/code_cache
-	rm -rf $DD/$PKG/cache
-	rm -rf $DD/$PKG/no_backup
 	echo "Done. Succesfully fixing to normal."
 	sleep 1
 	echo "Exiting automatically in 5 seconds, CTRL + C for canceling."
@@ -300,10 +297,10 @@ fi
 
 function replacelib() {
 am start -n com.termux/com.termux.app.TermuxActivity &> /dev/null
-am force-stop com.google.android.inputmethod.latin
-cp -F /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. && echo "Succes replacing lib." || 64bit
+# am force-stop com.google.android.inputmethod.latin
+cp -f --remove-destination /data/adb/modules/znull/libraries/LibMod/* ${LIB}/. && echo "Succes replacing lib." || 64bit
 chmod 755 $LIB/*
-am force-stop com.google.android.inputmethod.latin
+# am force-stop com.google.android.inputmethod.latin
 sleep 1
 am start -n $PKG/com.epicgames.ue4.SplashActivity &> /dev/null
 }
@@ -343,7 +340,8 @@ echo -e "Game closed, restoring all to normal."
 #chmod -Rf 775 $PAKS
 su -c /system/bin/pm install -i com.android.vending -r /data/app/$PKG*/*.apk &> /dev/null
 
-rm -rf $DD/$PKG/files 
+	rm -rf $DD/$PKG/app_crashrecord
+	touch $DD/$PKG/app_crashrecord
 
 echo "Done. Succesfully restoring to normal."
 sleep 1
