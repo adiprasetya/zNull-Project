@@ -5,6 +5,13 @@ else
     os.exit()
 end
 
+local v = gg.getTargetInfo()
+
+if v.versionName ~= "1.1.0" then
+	print("ㅤ\n🇲🇨zNull🇲🇨\nOnly Works at version 1.1.0 32bit, ur version is", v.versionName, "\nForgive me :)\n\nBest Regards, Adi Prasetya.")
+	os.exit()
+end
+
 gg.setVisible(false)
 
 on = "丨【 ON 】"
@@ -15,7 +22,7 @@ function HOMEG()
     MENUG =
         gg.choice(
         {
-            "➤ Bypass || Memory Freeze【 Lobby 】",
+            "➤ Bypass || Memory Freeze【 Lobby 】[Detected!]",
             "➤ Anti Report【 Island 】",
             "➤ More Cheats...",
             "☣ ＥＸＩＴ ☣"
@@ -140,22 +147,6 @@ function bcwhG()
     gg.toast("WallHack ✔")
 end
 
-function ANTIREPORT()
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1D40C98
-    setvalue(so + py, 16, 0)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1C57DEC
-    setvalue(so + py, 16, 0)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x1DBA718
-    setvalue(so + py, 16, 0)
-    so = gg.getRangesList("libUE4.so")[1].start
-    py = 0x4C4325
-    setvalue(so + py, 16, 0)
-    gg.toast("Anti Report ✔")
-end
-
 function MB()
     gg.clearResults()
     gg.setRanges(gg.REGION_ANONYMOUS)
@@ -170,122 +161,6 @@ function MB()
     end
 end
 
-function AIM360()
-    POVAlert =
-        gg.alert(
-        "\n☣ AIMBOT 360°!!! ☣\nNeed Bypass || Memory Freeze, because the value is Memory Hack!\nAre you sure about this?",
-        "☣ SURE! ☣",
-        "☣ CANCEL ☣",
-        "BYPASS ?"
-    )
-    if POVAlert == 1 then
-        gg.setRanges(16384)
-        local dataType = 16
-        local search = {{-1.2573531344941352E23, 0}, {-9.90656151829801E27, -40}}
-        local modify = {{-9.9066194e27, -40}}
-        gg.clearResults()
-        gg.setRanges(gg.REGION_CODE_APP)
-        gg.searchNumber("-511703038;-336586961:29", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-        gg.searchNumber("-511703038", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-        gg.getResults(2)
-        gg.editAll("-476053504", gg.TYPE_DWORD)
-        gg.clearResults()
-        gg.setRanges(gg.REGION_CODE_APP)
-        gg.searchNumber("1.6615354e35;-5.8049376e26:9", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-        gg.searchNumber("1.6615354e35", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-        gg.getResults(6)
-        gg.editAll("1.6615351e35", gg.TYPE_FLOAT)
-        gg.clearResults()
-        gg.setRanges(gg.REGION_CODE_APP)
-        gg.searchNumber("-1903895621994000383", gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1)
-        gg.getResults(10)
-        gg.editAll("-1903895621994000382", gg.TYPE_QWORD)
-        gg.clearResults()
-        gg.setRanges(gg.REGION_CODE_APP)
-        gg.searchNumber("2015175168", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-        gg.getResults(6)
-        gg.editAll("0", gg.TYPE_FLOAT)
-        gg.clearResults()
-        gg.setRanges(gg.REGION_CODE_APP)
-        gg.searchNumber("1.6615354e35;-5.8048945e26:9", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-        gg.searchNumber("1.6615354e35", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-        gg.getResults(6)
-        gg.editAll("1.6615351e35", gg.TYPE_FLOAT)
-        gg.clearResults()
-        local dataType = 32
-        local tb1 = {{-1905867063313810928, 0}}
-        local tb2 = {{-1324327739884306431, -12}}
-        gg.setRanges(16384)
-        local dataType = 16
-        local search = {
-            {4.387686491826876E31, 0},
-            {1.9938161152173576E-19, -92}
-        }
-        local modify = {{-9.9066182e27, -92}}
-        gg.setRanges(16384)
-        local dataType = 16
-        local search = {
-            {4.5422619231892774E30, 0},
-            {15149272399872.0, -44}
-        }
-        local modify = {{-9.9839906e27, -44}}
-        gg.setRanges(16384)
-        local dataType = 16
-        local search = {
-            {9.999999747378752E-5, 0},
-            {360.0, -12},
-            {-360.0, -8},
-            {180.0, -4},
-            {-1.0153182385499395E28, 8}
-        }
-        local modify = {{9999, 0}}
-        gg.clearResults()
-        gg.setRanges(16384)
-        localdataType = 16
-        local tb1 = {{-1.427811e28, 0}, {1.8175359e-27, -8}, {6.1630956e-33, -4}}
-        localtb2 = {{0, 0}}
-        SearchWrite(tb1, tb2, dataType)
-        gg.clearResults()
-        gg.toast("Aimbot 360° ✓")
-    end
-    if POVAlert == 2 then
-        gg.toast("Aimbot 360° Cancelled...")
-        otherG()
-    end
-    if POVAlert == 3 then
-        BYPASS()
-        AIM360()
-    end
-end
-
-function AUTOHEADSHOOT()
-    HeadAlert =
-        gg.alert(
-        "\n☣ AUTO HEADSHOOT 100%!!! ☣\nNeed Bypass || Memory Freeze, because the value is Memory Hack! (maybe not work)\nAre you sure about this?",
-        "☣ SURE! ☣",
-        "☣ CANCEL ☣",
-        "BYPASS ?"
-    )
-    if HeadAlert == 1 then
-        gg.clearResults()
-        gg.setRanges(gg.REGION_ANONYMOUS)
-        gg.searchNumber("9.20161819458;23;25;30.5", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-        gg.searchNumber("25;30.5", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-        ab1 = gg.getResults(10)
-        gg.editAll("255", gg.TYPE_FLOAT)
-        gg.clearResults()
-        gg.toast("Auto Headshoot ✓")
-    end
-    if HeadAlert == 2 then
-        gg.toast("Auto Headshoot Cancelled...")
-        otherG()
-    end
-    if HeadAlert == 3 then
-        BYPASS()
-        AUTOHEADSHOOT()
-    end
-end
-
 function ZNULL()
 end
 function setvalue(address, flags, value)
@@ -296,6 +171,22 @@ function setvalue(address, flags, value)
     tt[1].flags = flags
     tt[1].value = value
     gg.setValues(tt)
+end
+
+function ANTIREPORT()
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1D40C98
+    setvalue(so + py, 16, 0)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1C57DEC
+    setvalue(so + py, 16, 0)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x1DBA718
+    setvalue(so + py, 16, 0)
+    so = gg.getRangesList("libUE4.so")[1].start
+    py = 0x4C4325
+    setvalue(so + py, 16, 0)
+    gg.toast("Anti Report ✔")
 end
 
 function LESSRECOIL()
@@ -437,11 +328,11 @@ function BYPASS()
         n = gg.getResultCount()
         jz = gg.getResults(n)
         for i = 1, n do
-            gg.addListItems({[1] = {address = jz[i].address + 236, flags = 4, freeze = true, value = 67109633}})
-            gg.addListItems({[1] = {address = jz[i].address + 232, flags = 4, freeze = true, value = 67109633}})
-            gg.addListItems({[1] = {address = jz[i].address + 228, flags = 4, freeze = true, value = 67109633}})
-            gg.addListItems({[1] = {address = jz[i].address + 340, flags = 4, freeze = true, value = 67109633}})
-            gg.addListItems({[1] = {address = jz[i].address + 344, flags = 4, freeze = true, value = 67109633}})
+            gg.addListItems({[1] = {address = jz[i].address + 236, flags = 4, freeze = true, value = 0}})
+            gg.addListItems({[1] = {address = jz[i].address + 232, flags = 4, freeze = true, value = 0}})
+            gg.addListItems({[1] = {address = jz[i].address + 228, flags = 4, freeze = true, value = 0}})
+            gg.addListItems({[1] = {address = jz[i].address + 340, flags = 4, freeze = true, value = 0}})
+            gg.addListItems({[1] = {address = jz[i].address + 344, flags = 4, freeze = true, value = 0}})
         end
     end
     gg.clearResults()
@@ -449,25 +340,25 @@ function BYPASS()
     gg.searchNumber("133634;134914", gg.TYPE_DWORD)
     gg.refineNumber("133634", gg.TYPE_DWORD)
     gg.getResults(50500)
-    gg.editAll("67109633", gg.TYPE_DWORD)
+    gg.editAll("0", gg.TYPE_DWORD)
     gg.clearResults()
     gg.setRanges(gg.REGION_C_ALLOC)
     gg.searchNumber("134914;131330", gg.TYPE_DWORD)
     gg.refineNumber("134914", gg.TYPE_DWORD)
     gg.getResults(50500)
-    gg.editAll("67109633", gg.TYPE_DWORD)
+    gg.editAll("0", gg.TYPE_DWORD)
     gg.clearResults()
     gg.setRanges(gg.REGION_C_ALLOC)
     gg.searchNumber("131586;131842", gg.TYPE_DWORD)
     gg.refineNumber("131586", gg.TYPE_DWORD)
     gg.getResults(50500)
-    gg.editAll("67109633", gg.TYPE_DWORD)
+    gg.editAll("0", gg.TYPE_DWORD)
     gg.clearResults()
     gg.setRanges(gg.REGION_C_ALLOC)
     gg.searchNumber("132098;133635", gg.TYPE_DWORD)
     gg.refineNumber("132098", gg.TYPE_DWORD)
     gg.getResults(50500)
-    gg.editAll("67109633", gg.TYPE_DWORD)
+    gg.editAll("0", gg.TYPE_DWORD)
     gg.clearResults()
 
     gg.toast("Bypass || Memory Freeze ✓")
@@ -476,7 +367,7 @@ end
 gg.setVisible(false)
 
 function exit()
-    print("END\n")
+    print("Best Regards, Adi Prasetya.\n\nEND\n")
     os.exit()
 end
 
@@ -492,7 +383,7 @@ function LobbyAlertG()
 end
 
 function GLOBALALERT()
-    GA = gg.alert("Last Update: 1 Jan 2021\n\nNo cheating is safe, anti-ban is just an illusion. Remember that!", "OKE!", "EXIT")
+    GA = gg.alert("Last Update: 2 Jan 2021\n\nNo cheating is safe, anti-ban is just an illusion. Remember that!", "OKE!", "EXIT")
     if GA == 1 then
         HOMEG()
     end
